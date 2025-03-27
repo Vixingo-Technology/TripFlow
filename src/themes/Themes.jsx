@@ -13,19 +13,19 @@ export const ThemeProvider = ({ children }) => {
                 ...(mode === "dark"
                     ? {
                           primary: {
-                              main: "#1976D2",
+                              main: "#EB0045",
                           },
-                          secondary: { main: "#F5F5F5" },
-                          background: { default: "#18235A", paper: "#0D458E" },
-                          text: { primary: "#ffffff", secondary: "#b0b0b0" },
+                          secondary: { main: "#00263A" },
+                          background: { default: "#000000", paper: "#3d0000" },
+                          text: { primary: "#ffffff", secondary: "#ffffff" },
                       }
                     : {
                           primary: {
-                              main: "#1976D2",
+                              main: "#EB0045",
                           },
-                          secondary: { main: "#F5F5F5" },
-                          background: { default: "#18235A", paper: "#0D458E" },
-                          text: { primary: "#ffffff", secondary: "#b0b0b0" },
+                          secondary: { main: "#00263A" },
+                          background: { default: "#ffffff", paper: "#ededed" },
+                          text: { primary: "#EB0045", secondary: "#ffffff" },
                       }),
             },
             typography: {

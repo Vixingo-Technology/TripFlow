@@ -23,6 +23,14 @@ import PropTypes from "prop-types";
 import useScrollTrigger from "@mui/material/useScrollTrigger";
 
 import MenuIcon from "@mui/icons-material/Menu";
+import {
+    ArrowBack,
+    Call,
+    LocalHospital,
+    Login,
+    PhoneCallback,
+    Search,
+} from "@mui/icons-material";
 
 function ElevationScroll(props) {
     const { children, window } = props;
@@ -76,7 +84,7 @@ function Header(props) {
     const drawer = (
         <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
             <Typography variant="h6" sx={{ my: 1 }}>
-                <img src={logo} alt="logo" width={50} height={50} />
+                <img src={logo} alt="logo" width={90} height={30} />
             </Typography>
             <Divider />
             <List>
@@ -123,7 +131,45 @@ function Header(props) {
                         // zIndex: (theme) => theme.zIndex.drawer + 1,
                     }}
                 >
-                    <Box sx={{ backgroundColor: "darkblue" }}>m</Box>
+                    <Box
+                        sx={{
+                            backgroundColor: "#00263A",
+                            display: { xs: "none", md: "flex" },
+                            alignItems: "center",
+                            justifyContent: " space-between",
+                            px: 2,
+                            gap: 2,
+                            pr: 4,
+                        }}
+                    >
+                        <Button
+                            startIcon={<ArrowBack />}
+                            sx={{
+                                color: "white",
+                                textTransform: "none",
+                                flex: 1,
+                                justifyContent: "flex-start",
+                            }}
+                        >
+                            Back to Trip Flow Site{" "}
+                        </Button>
+                        <Button color="text" startIcon={<Call />}>
+                            999-999-9999
+                        </Button>
+                        <Button color="text" startIcon={<PhoneCallback />}>
+                            Request Call Back
+                        </Button>
+                        <Button color="text" startIcon={<Search />}>
+                            Search
+                        </Button>
+
+                        <Button color="text" startIcon={<LocalHospital />}>
+                            Hospital Portal
+                        </Button>
+                        <Button color="text" startIcon={<Login />}>
+                            Login
+                        </Button>
+                    </Box>
                     <Toolbar
                         sx={{
                             backgroundImage: "none",
@@ -131,13 +177,13 @@ function Header(props) {
                             width: "100%",
                             margin: "0 auto",
                             px: 2,
-                            backgroundColor: "rgba(255, 255, 255, 0.8)",
+                            backgroundColor: "primary.main",
                         }}
                     >
                         <Logo />
                         <Box
                             sx={{
-                                display: { xs: "none", md: "block" },
+                                display: { xs: "none", lg: "block" },
                             }}
                         >
                             {navItems.map((item) => (
@@ -149,9 +195,11 @@ function Header(props) {
                                         key={item}
                                         sx={{
                                             textTransform: "Capitalize",
-
+                                            ml: 4,
                                             color: (theme) =>
                                                 theme.palette.text.secondary,
+                                            fontSize: "1rem",
+                                            fontWeight: "700",
                                         }}
                                     >
                                         {item}
@@ -172,8 +220,8 @@ function Header(props) {
                                 position: "absolute",
                                 mr: 1,
                                 right: 0,
-                                display: { md: "none" },
-                                color: (theme) => theme.palette.text.primary,
+                                display: { lg: "none" },
+                                color: (theme) => theme.palette.text.secondary,
                             }}
                         >
                             <MenuIcon />
@@ -192,7 +240,7 @@ function Header(props) {
                     }}
                     anchor="right"
                     sx={{
-                        display: { xs: "block", md: "none" },
+                        display: { xs: "block", lg: "none" },
                         "& .MuiDrawer-paper": {
                             backdropFilter: "blur(24px)",
                             boxSizing: "border-box",

@@ -1,6 +1,6 @@
 import React from "react";
 import logo from "../../assets/logo.png";
-import { Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { Link } from "react-router";
 
 export default function Logo() {
@@ -15,13 +15,14 @@ export default function Logo() {
                     flex: 1,
                 }}
             >
-                <Typography
-                    variant="h6"
+                <Box
+                    // variant="h6"
                     component="div"
                     sx={{
                         flex: 1,
                         display: { xs: "flex", md: "flex" },
-                        alignItems: "center",
+                        alignItems: "flex-start",
+                        flexDirection: "column",
                         justifyContent: {
                             // xs: "center",
                             // md: "flex-start",
@@ -34,12 +35,14 @@ export default function Logo() {
                     <img
                         src={logo}
                         alt="logo"
-                        width={100}
-                        height={60}
+                        width={90}
+                        height={30}
                         style={{ marginRight: "10px" }}
                     />
-                    {/* <b>Su</b>Lynn */}
-                </Typography>
+                    <Typography color="secondary">
+                        <b>General </b> Insurance
+                    </Typography>
+                </Box>
             </Link>{" "}
         </>
     );
