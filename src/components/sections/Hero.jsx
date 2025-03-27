@@ -13,7 +13,7 @@ export default function Hero() {
                 // columns={{ xs: 1, sm: 12 }}
                 direction={{ xs: "column-reverse", lg: "row" }}
                 sx={{
-                    mt: { xs: "50px", md: "100px" },
+                    mt: { xs: "80px", md: "12 0px" },
                     bgcolor: "secondary.main",
 
                     display: "flex",
@@ -28,14 +28,14 @@ export default function Hero() {
                         <img src={bag} width={80} />
                         <Typography
                             variant="h3"
-                            color="primary"
+                            color="text.secondary"
                             sx={{ mb: 2, fontWeight: "bold" }}
                         >
                             Travel Insurance
                         </Typography>
                         <Typography
                             variant="h4"
-                            color="text.primary"
+                            color="text.secondary"
                             sx={{ mb: 3, maxWidth: "90%" }}
                         >
                             Start every journey and every adventure with the
@@ -79,7 +79,7 @@ export default function Hero() {
                                 xs: "polygon(100% 0, 100% 85%, 0 96%, 0 21%, 29% 0);",
                                 lg: " polygon(100% 0, 100% 69%, 70% 100%, 0 100%, 30% 0);",
                             },
-                            height: { xs: "30vh", lg: "80vh" },
+                            height: { xs: "30vh", lg: "95vh" },
                             width: { xs: "100%", lg: "100%" },
                         }}
                     >
@@ -99,10 +99,11 @@ export default function Hero() {
                     sx={{
                         textAlign: "right",
                         p: 3,
-                        bgcolor: (theme) => theme.palette.primary.main,
+                        bgcolor: (theme) => theme.palette.background,
                     }}
                 >
-                    Already purchased? <NavLink>Find your policy</NavLink>
+                    Already purchased?{" "}
+                    <NavLink to="/quote">Find your policy</NavLink>
                 </Typography>
             </Box>
         </Box>

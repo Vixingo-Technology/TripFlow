@@ -13,11 +13,11 @@ export const ThemeProvider = ({ children }) => {
                 ...(mode === "dark"
                     ? {
                           primary: {
-                              main: "#EB0045",
+                              main: "#950101",
                           },
-                          secondary: { main: "#00263A" },
+                          secondary: { main: "#000000" },
                           background: { default: "#000000", paper: "#3d0000" },
-                          text: { primary: "#ffffff", secondary: "#ffffff" },
+                          text: { primary: "#ffffff", secondary: "#ededed" },
                       }
                     : {
                           primary: {
@@ -25,7 +25,7 @@ export const ThemeProvider = ({ children }) => {
                           },
                           secondary: { main: "#00263A" },
                           background: { default: "#ffffff", paper: "#ededed" },
-                          text: { primary: "#EB0045", secondary: "#ffffff" },
+                          text: { primary: "#00263A", secondary: "#ffffff" },
                       }),
             },
             typography: {
@@ -51,7 +51,12 @@ export const ThemeProvider = ({ children }) => {
                         fontSize: "2.2rem",
                     },
                 },
-
+                h4: {
+                    fontWeight: 500,
+                    "@media (max-width:600px)": {
+                        fontSize: "1.9rem",
+                    },
+                },
                 h5: {
                     // fontSize: "59px",
                     // lineHeight: "120%",
@@ -109,7 +114,7 @@ export const ThemeProvider = ({ children }) => {
     );
 
     const ThemeContext = React.createContext();
-    const [themeMode, setThemeMode] = useState("dark");
+    const [themeMode, setThemeMode] = useState("light");
 
     const toggleTheme = () => {
         const newThemeMode = themeMode === "light" ? "dark" : "light";
@@ -243,7 +248,7 @@ export const ThemeProvider = ({ children }) => {
 
     return (
         <ThemeContext.Provider value={{ themeMode, toggleTheme }}>
-            <MuiThemeProvider theme={theme}>{children}</MuiThemeProvider>{" "}
+            <MuiThemeProvider theme={theme}>{children}</MuiThemeProvider>
         </ThemeContext.Provider>
     );
 };

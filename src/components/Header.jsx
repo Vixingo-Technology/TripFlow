@@ -83,8 +83,8 @@ function Header(props) {
 
     const drawer = (
         <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
-            <Typography variant="h6" sx={{ my: 1 }}>
-                <img src={logo} alt="logo" width={90} height={30} />
+            <Typography variant="h6" sx={{ py: 1, bgcolor: "primary.main" }}>
+                <img src={logo} alt="logo" width={120} />
             </Typography>
             <Divider />
             <List>
@@ -133,7 +133,7 @@ function Header(props) {
                 >
                     <Box
                         sx={{
-                            backgroundColor: "#00263A",
+                            backgroundColor: "secondary.main",
                             display: { xs: "none", md: "flex" },
                             alignItems: "center",
                             justifyContent: " space-between",
