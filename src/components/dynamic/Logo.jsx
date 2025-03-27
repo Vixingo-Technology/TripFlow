@@ -35,7 +35,7 @@ export default function Logo() {
                     <img
                         src={logo}
                         alt="logo"
-                        width={170}
+                        width={150}
                         // height={40}
                         style={{ marginRight: "10px" }}
                     />
