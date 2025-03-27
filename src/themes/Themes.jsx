@@ -65,6 +65,7 @@ export const ThemeProvider = ({ children }) => {
                 MuiButton: {
                     styleOverrides: {
                         root: {
+                            transition: "all 0.3s",
                             borderRadius: "0px",
                             textTransform: "none",
                             "&:hover": {
@@ -75,7 +76,9 @@ export const ThemeProvider = ({ children }) => {
                             // boxShadow: "none",
                             transition: "all 0.5s",
                             "&:hover": {
-                                color: "#fff",
+                                color: "#EB0045",
+                                backgroundColor: "#fff",
+
                                 // boxShadow: "none",
                             },
                         },

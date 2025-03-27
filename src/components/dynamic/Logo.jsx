@@ -35,11 +35,11 @@ export default function Logo() {
                     <img
                         src={logo}
                         alt="logo"
-                        width={90}
-                        height={30}
+                        width={120}
+                        height={40}
                         style={{ marginRight: "10px" }}
                     />
-                    <Typography color="secondary" fontSize={"0.9rem"}>
+                    <Typography color="secondary" fontSize={"1.2rem"}>
                         <b>General </b> Insurance
                     </Typography>
                 </Box>
