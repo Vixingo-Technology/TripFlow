@@ -140,6 +140,7 @@ function Header(props) {
                             px: 2,
                             gap: 2,
                             pr: 4,
+                            // fontSize: "0.9rem",
                         }}
                     >
                         <Button
@@ -198,7 +199,7 @@ function Header(props) {
                                             ml: 4,
                                             color: (theme) =>
                                                 theme.palette.text.secondary,
-                                            fontSize: "1rem",
+                                            fontSize: "1.2rem",
                                             fontWeight: "700",
                                         }}
                                     >

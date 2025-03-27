@@ -39,7 +39,7 @@ export default function Logo() {
                         height={30}
                         style={{ marginRight: "10px" }}
                     />
-                    <Typography color="secondary">
+                    <Typography color="secondary" fontSize={"0.9rem"}>
                         <b>General </b> Insurance
                     </Typography>
                 </Box>
