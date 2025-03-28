@@ -83,8 +83,8 @@ function Header(props) {
 
     const drawer = (
         <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
-            <Typography variant="h6" sx={{ py: 1, bgcolor: "primary.main" }}>
-                <img src={logo} alt="logo" width={120} />
+            <Typography variant="h6" sx={{ py: 0, bgcolor: "primary.main" }}>
+                <img src={logo} alt="logo" width={110} />
             </Typography>
             <Divider />
             <List>

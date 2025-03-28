@@ -16,7 +16,7 @@ export default function IconCard({ icon, title, des }) {
                 <Typography
                     sx={{ color: "text.secondary", mb: 1 }}
                 ></Typography>
-                <Typography variant="h6">{des}</Typography>
+                <Typography variant="h5">{des}</Typography>
             </CardContent>
         </React.Fragment>
     );

@@ -16,11 +16,11 @@ export default function Help() {
                     alignItems: "center",
                     maxWidth: "1720px",
                     margin: "0 auto",
-                    p: 2,
+                    px: 2,
                 }}
             >
                 <Grid item size={{ xs: 12, lg: 6 }}>
-                    <Box sx={{ maxWidth: "600px", mx: "auto" }}>
+                    <Box sx={{ maxWidth: "600px", mx: "auto", mb: -0.7 }}>
                         <img src={wlh} alt="" width={"100%"} />
                     </Box>
                 </Grid>
