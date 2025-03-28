@@ -28,14 +28,14 @@ export default function Hero() {
                         <img src={bag} width={80} />
                         <Typography
                             variant="h3"
-                            color="text.secondary"
+                            color="#fff"
                             sx={{ mb: 2, fontWeight: "bold" }}
                         >
                             Travel Insurance
                         </Typography>
                         <Typography
                             variant="h4"
-                            color="text.secondary"
+                            color="#fff"
                             sx={{ mb: 3, maxWidth: "90%" }}
                         >
                             Start every journey and every adventure with the

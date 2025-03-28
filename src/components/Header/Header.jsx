@@ -197,8 +197,7 @@ function Header(props) {
                                         sx={{
                                             textTransform: "Capitalize",
                                             ml: 4,
-                                            color: (theme) =>
-                                                theme.palette.text.secondary,
+                                            color: "white",
                                             fontSize: "1.2rem",
                                             fontWeight: "700",
                                         }}

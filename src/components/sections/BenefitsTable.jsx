@@ -203,8 +203,9 @@ const BenefitsTable = () => {
                     sx={{
                         p: 2,
                         bgcolor: "primary.main",
-                        color: "text.secondary",
+                        color: "#fff",
                         textAlign: "center",
+                        fontWeight: 700,
                     }}
                 >
                     BENEFITS SCHEDULE

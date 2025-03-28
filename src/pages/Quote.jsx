@@ -6,13 +6,18 @@ import Stepper from "@mui/material/Stepper";
 import Step from "@mui/material/Step";
 import StepLabel from "@mui/material/StepLabel";
 import Check from "@mui/icons-material/Check";
-import SettingsIcon from "@mui/icons-material/Settings";
-import GroupAddIcon from "@mui/icons-material/GroupAdd";
-import VideoLabelIcon from "@mui/icons-material/VideoLabel";
+
+import TravelExploreIcon from "@mui/icons-material/TravelExplore";
+import AddModeratorIcon from "@mui/icons-material/AddModerator";
+import BeenhereIcon from "@mui/icons-material/Beenhere";
 import StepConnector, {
     stepConnectorClasses,
 } from "@mui/material/StepConnector";
 import { Box, Button, Typography } from "@mui/material";
+
+import PlanForm from "../components/forms/PlanForm";
+import SummaryForm from "../components/forms/SummaryForm";
+import TavelForm from "../components/forms/TavelForm";
 
 const QontoConnector = styled(StepConnector)(({ theme }) => ({
     [`&.${stepConnectorClasses.alternativeLabel}`]: {
@@ -104,13 +109,13 @@ const ColorlibConnector = styled(StepConnector)(({ theme }) => ({
     [`&.${stepConnectorClasses.active}`]: {
         [`& .${stepConnectorClasses.line}`]: {
             backgroundImage:
-                "linear-gradient( 95deg,rgb(242,113,33) 0%,rgb(233,64,87) 50%,rgb(138,35,135) 100%)",
+                "linear-gradient( 95deg,#EB0045 0%,rgb(233,64,87) 50%,#EB004550 100%)",
         },
     },
     [`&.${stepConnectorClasses.completed}`]: {
         [`& .${stepConnectorClasses.line}`]: {
             backgroundImage:
-                "linear-gradient( 95deg,rgb(242,113,33) 0%,rgb(233,64,87) 50%,rgb(138,35,135) 100%)",
+                "linear-gradient( 95deg,#EB0045 0%,#EB0045 50%,#EB0045 100%)",
         },
     },
     [`& .${stepConnectorClasses.line}`]: {
@@ -142,7 +147,7 @@ const ColorlibStepIconRoot = styled("div")(({ theme }) => ({
             props: ({ ownerState }) => ownerState.active,
             style: {
                 backgroundImage:
-                    "linear-gradient( 136deg, rgb(242,113,33) 0%, rgb(233,64,87) 50%, rgb(138,35,135) 100%)",
+                    "linear-gradient( 136deg, #EB0045 0%, #ff000070 50%, #00263A30 100%)",
                 boxShadow: "0 4px 10px 0 rgba(0,0,0,.25)",
             },
         },
@@ -150,7 +155,7 @@ const ColorlibStepIconRoot = styled("div")(({ theme }) => ({
             props: ({ ownerState }) => ownerState.completed,
             style: {
                 backgroundImage:
-                    "linear-gradient( 136deg, rgb(242,113,33) 0%, rgb(233,64,87) 50%, rgb(138,35,135) 100%)",
+                    "linear-gradient( 136deg, #EB0045 0%, #EB0045 50%, #ff0000 100%)",
             },
         },
     ],
@@ -160,9 +165,9 @@ function ColorlibStepIcon(props) {
     const { active, completed, className } = props;
 
     const icons = {
-        1: <SettingsIcon />,
-        2: <GroupAddIcon />,
-        3: <VideoLabelIcon />,
+        1: <TravelExploreIcon />,
+        2: <AddModeratorIcon />,
+        3: <BeenhereIcon />,
     };
 
     return (
@@ -193,11 +198,7 @@ ColorlibStepIcon.propTypes = {
     icon: PropTypes.node,
 };
 
-const steps = [
-    "Select campaign settings",
-    "Create an ad group",
-    "Create an ad",
-];
+const steps = ["Your Travel Details", "Plans and Benefits", "Summary"];
 
 export default function Quote() {
     const [activeStep, setActiveStep] = React.useState(0);
@@ -257,18 +258,9 @@ export default function Quote() {
         >
             <Stepper
                 alternativeLabel
-                activeStep={1}
+                activeStep={activeStep}
                 connector={<ColorlibConnector />}
             >
-                {steps.map((label) => (
-                    <Step key={label}>
-                        <StepLabel StepIconComponent={ColorlibStepIcon}>
-                            {label}
-                        </StepLabel>
-                    </Step>
-                ))}
-            </Stepper>
-            <Stepper activeStep={activeStep} connector={<ColorlibConnector />}>
                 {steps.map((label, index) => {
                     const stepProps = {};
                     const labelProps = {};
@@ -296,22 +288,62 @@ export default function Quote() {
             </Stepper>
             {activeStep === steps.length ? (
                 <React.Fragment>
-                    <Typography sx={{ mt: 2, mb: 1, color: "primary" }}>
-                        Thank You for your quote request!
-                    </Typography>
-                    <Box sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
-                        <Box sx={{ flex: "1 1 auto" }} />
-                        <Button onClick={handleReset} variant="contained">
-                            Get Another Quote{" "}
-                        </Button>
+                    <Box
+                        sx={{
+                            maxWidth: "1200px",
+                            mx: "auto",
+                            px: 2,
+                        }}
+                    >
+                        <Typography sx={{ mt: 2, mb: 1, color: "primary" }}>
+                            Thank You for your quote request!
+                        </Typography>
+                        <Box
+                            sx={{
+                                display: "flex",
+                                flexDirection: "row",
+                                pt: 2,
+                            }}
+                        >
+                            <Box sx={{ flex: "1 1 auto" }} />
+                            <Button onClick={handleReset} variant="contained">
+                                Get Another Quote{" "}
+                            </Button>
+                        </Box>
                     </Box>
                 </React.Fragment>
             ) : (
                 <React.Fragment>
-                    <Typography sx={{ mt: 2, mb: 1 }} color="primary">
-                        Step {activeStep + 1}
-                    </Typography>
-                    <Box sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
+                    <Box
+                        sx={{
+                            bgcolor: "paper",
+                            maxWidth: "1200px",
+                            mx: "auto",
+                            px: 2,
+                        }}
+                    >
+                        <Typography sx={{ mt: 2, mb: 1 }} color="primary">
+                            Step {activeStep + 1}
+                            {activeStep === 0 ? (
+                                <TavelForm />
+                            ) : activeStep === 1 ? (
+                                <PlanForm />
+                            ) : (
+                                <SummaryForm />
+                            )}
+                        </Typography>
+                    </Box>
+                    <Box
+                        sx={{
+                            display: "flex",
+                            flexDirection: "row",
+
+                            maxWidth: "1200px",
+                            mx: "auto",
+                            p: 2,
+                            bgcolor: "pink",
+                        }}
+                    >
                         <Button
                             color="inherit"
                             disabled={activeStep === 0}
@@ -321,7 +353,7 @@ export default function Quote() {
                             Back
                         </Button>
                         <Box sx={{ flex: "1 1 auto" }} />
-                        {isStepOptional(activeStep) && (
+                        {/* {isStepOptional(activeStep) && (
                             <Button
                                 color="inherit"
                                 onClick={handleSkip}
@@ -329,7 +361,7 @@ export default function Quote() {
                             >
                                 Skip
                             </Button>
-                        )}
+                        )} */}
                         <Button onClick={handleNext} variant="contained">
                             {activeStep === steps.length - 1
                                 ? "Finish"

@@ -1,6 +1,7 @@
 import { Box, Button, Grid, Typography } from "@mui/material";
 import React from "react";
 import explore from "../../assets/explore.jpg";
+import { NavLink } from "react-router";
 export default function Explore() {
     return (
         <>
@@ -57,20 +58,22 @@ export default function Explore() {
             >
                 <Typography
                     variant="h4"
-                    color="text.secondary"
+                    color="white"
                     fontWeight={600}
                     sx={{ minWidth: "100px" }}
                 >
                     Find out more - call (+999) 999 999 999 today.
                 </Typography>
-                <Button
-                    variant="contained"
-                    color="secondary"
-                    size="large"
-                    sx={{ fontWeight: "bold", fontSize: "24px" }}
-                >
-                    Get Quote
-                </Button>
+                <NavLink to={"/quote"}>
+                    <Button
+                        variant="contained"
+                        color="secondary"
+                        size="large"
+                        sx={{ fontWeight: "bold", fontSize: "24px" }}
+                    >
+                        Get Quote
+                    </Button>
+                </NavLink>
             </Box>
         </>
     );

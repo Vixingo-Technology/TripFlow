@@ -121,7 +121,7 @@ export default function Footer() {
                 //     backdropFilter: "grayscale(100%)",
                 //     p: 6,
                 // }}
-                sx={{ bgcolor: "background.paper", p: 2 }}
+                sx={{ bgcolor: "background.paper", p: 2, mt: 15 }}
             >
                 <footer
                     style={{
