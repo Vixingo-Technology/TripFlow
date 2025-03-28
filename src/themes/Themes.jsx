@@ -47,6 +47,7 @@ export const ThemeProvider = ({ children }) => {
                     },
                 },
                 h3: {
+                    fontWeight: 500,
                     "@media (max-width:600px)": {
                         fontSize: "2.2rem",
                     },

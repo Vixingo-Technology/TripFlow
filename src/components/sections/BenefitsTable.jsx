@@ -187,11 +187,12 @@ const BenefitsTable = () => {
                 }}
             >
                 <Typography
-                    variant="h4"
+                    variant="h3"
                     sx={{
                         color: "primary.main",
                         p: 2,
-                        fontWeight: "500",
+
+                        my: 5,
                     }}
                 >
                     {" "}
