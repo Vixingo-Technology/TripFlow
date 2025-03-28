@@ -38,7 +38,7 @@ export default function Explore() {
                         </Typography>
                     </Grid>
                     <Grid item size={{ xs: 1, md: 6 }}>
-                        <Box maxWidth={"600px"} margin={"30px auto"}>
+                        <Box maxWidth={"500px"} margin={"30px auto"}>
                             <img src={explore} alt="" width={"100%"} />
                         </Box>
                     </Grid>

@@ -63,7 +63,7 @@ export default function Term() {
                         </Typography>
                     </Grid>
                     <Grid item size={{ xs: 1, md: 6 }}>
-                        <Box maxWidth={"600px"} margin={"30px auto"}>
+                        <Box maxWidth={"650px"} margin={"30px auto"}>
                             <img src={term} alt="" width={"100%"} />
                         </Box>
                     </Grid>

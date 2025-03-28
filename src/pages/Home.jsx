@@ -5,6 +5,7 @@ import Benefits from "../components/sections/Benefits";
 import Term from "../components/sections/Term";
 import BenefitsTable from "../components/sections/BenefitsTable";
 import Help from "../components/sections/Help";
+import RelatedProducts from "../components/sections/RelatedProducts";
 
 export default function Home() {
     return (
@@ -15,6 +16,7 @@ export default function Home() {
             <Term />
             <BenefitsTable />
             <Help />
+            <RelatedProducts />
         </>
     );
 }
