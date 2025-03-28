@@ -151,13 +151,18 @@ export default function Footer() {
                                     },
                                 }}
                             >
-                                {" "}
+                                <Typography
+                                    variant="h6"
+                                    sx={{ mt: 2, ml: 2, color: "primary.main" }}
+                                >
+                                    Connect with us{" "}
+                                </Typography>{" "}
                                 <SubForm />
                                 <Box
                                     sx={{
                                         display: "flex",
                                         gap: 2,
-                                        mt: 1,
+                                        m: 1,
                                     }}
                                 >
                                     {socials.map((social, index) => (

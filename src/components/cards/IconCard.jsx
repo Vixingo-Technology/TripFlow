@@ -8,7 +8,7 @@ import Typography from "@mui/material/Typography";
 export default function IconCard({ icon, title, des }) {
     const card = (
         <React.Fragment>
-            <CardContent sx={{ height: { lg: "475px", xs: "550px" } }}>
+            <CardContent sx={{ minHeight: { lg: "510px", xs: "550px" } }}>
                 {icon}
                 <Typography variant="h4" color="primary" fontWeight={500}>
                     {title}

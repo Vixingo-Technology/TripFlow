@@ -40,11 +40,14 @@ export default function SubForm() {
                 }}
             >
                 <TextField
-                    variant="filled"
+                    variant="outlined"
                     id="filled-basic"
                     label="Enter Your Email"
                     InputLabelProps={{
-                        style: { color: "#000" },
+                        style: {
+                            color: "#ff000050",
+                            textShadow: "0 0 0px #fff",
+                        },
                     }}
                     fullWidth
                     slotProps={{
@@ -62,7 +65,6 @@ export default function SubForm() {
                     }}
                     sx={{ fontSize: "16px", color: "text.primary" }}
                 />
-                <Typography variant="body1">Connect with us </Typography>
             </Box>
         </>
     );

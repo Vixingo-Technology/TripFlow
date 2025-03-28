@@ -13,10 +13,13 @@ export const ThemeProvider = ({ children }) => {
                 ...(mode === "dark"
                     ? {
                           primary: {
-                              main: "#950101",
+                              main: "#ff000090",
                           },
                           secondary: { main: "#000000" },
-                          background: { default: "#000000", paper: "#3d0000" },
+                          background: {
+                              default: "#000000",
+                              paper: "#3d000070",
+                          },
                           text: { primary: "#ffffff", secondary: "#ededed" },
                       }
                     : {
@@ -47,12 +50,15 @@ export const ThemeProvider = ({ children }) => {
                     },
                 },
                 h3: {
+                    textShadow: " 0 0 0px #ffffff",
                     fontWeight: 500,
                     "@media (max-width:600px)": {
                         fontSize: "2.2rem",
                     },
                 },
                 h4: {
+                    textShadow: " 0 0 0px #ffffff",
+
                     fontWeight: 500,
                     "@media (max-width:600px)": {
                         fontSize: "1.8rem",
@@ -62,9 +68,13 @@ export const ThemeProvider = ({ children }) => {
                     // fontSize: "59px",
                     // lineHeight: "120%",
                     // fontWeight: "700",
+
                     "@media (max-width:600px)": {
                         fontSize: "1.2rem",
                     },
+                },
+                h6: {
+                    textShadow: " 0 0 0px #ffffff",
                 },
             },
             components: {
