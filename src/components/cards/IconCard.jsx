@@ -14,7 +14,7 @@ export default function IconCard({ icon, title, des }) {
                     {title}
                 </Typography>
                 <Typography
-                    sx={{ color: "text.secondary", mb: 1.5 }}
+                    sx={{ color: "text.secondary", mb: 1 }}
                 ></Typography>
                 <Typography variant="h6">{des}</Typography>
             </CardContent>

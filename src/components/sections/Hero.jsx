@@ -56,6 +56,7 @@ export default function Hero() {
                                     textTransform: "Capitalize",
                                     fontSize: 24,
                                     fontWeight: 700,
+                                    mb: 2,
                                 }}
                             >
                                 Get Instant Quote
@@ -99,6 +100,7 @@ export default function Hero() {
                     sx={{
                         textAlign: "right",
                         p: 3,
+
                         bgcolor: (theme) => theme.palette.background,
                     }}
                 >

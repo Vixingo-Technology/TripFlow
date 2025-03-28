@@ -49,7 +49,8 @@ export default function Explore() {
                     bgcolor: "primary.main",
                     p: 2,
                     display: "flex",
-                    justifyContent: "space-between",
+                    justifyContent: { xs: "center", lg: "space-between" },
+                    textAlign: { xs: "center", lg: "" },
                     flexWrap: "wrap",
                     gap: 2,
                 }}
@@ -66,7 +67,7 @@ export default function Explore() {
                     variant="contained"
                     color="secondary"
                     size="large"
-                    sx={{ fontWeight: "bold" }}
+                    sx={{ fontWeight: "bold", fontSize: "24px" }}
                 >
                     Get Quote
                 </Button>

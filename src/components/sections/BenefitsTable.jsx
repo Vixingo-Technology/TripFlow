@@ -190,7 +190,6 @@ const BenefitsTable = () => {
                     variant="h3"
                     sx={{
                         color: "primary.main",
-                        p: 2,
 
                         my: 5,
                     }}

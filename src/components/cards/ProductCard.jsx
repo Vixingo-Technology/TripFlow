@@ -20,6 +20,7 @@ export default function ProductCard({ icon, title, description }) {
                     flexDirection: "column",
                     minHeight: "320px",
                     p: 2,
+                    mx: 2,
                     transition: "all 0.3s",
                     "&:hover": {
                         backgroundColor: "primary.main",
