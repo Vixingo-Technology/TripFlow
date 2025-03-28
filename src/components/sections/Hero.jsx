@@ -13,7 +13,7 @@ export default function Hero() {
                 // columns={{ xs: 1, sm: 12 }}
                 direction={{ xs: "column-reverse", lg: "row" }}
                 sx={{
-                    mt: { xs: "80px", md: "12 0px" },
+                    mt: { xs: "100px", md: "12 0px" },
                     bgcolor: "secondary.main",
 
                     display: "flex",
@@ -76,7 +76,7 @@ export default function Hero() {
                             backgroundSize: "cover",
                             backgroundPosition: "right",
                             clipPath: {
-                                xs: "polygon(100% 0, 100% 85%, 0 96%, 0 21%, 29% 0);",
+                                xs: "polygon(100% 0, 100% 85%, 0 96%, 0 50%, 50% 0);",
                                 lg: " polygon(100% 0, 100% 69%, 70% 100%, 0 100%, 30% 0);",
                             },
                             height: { xs: "30vh", lg: "95vh" },

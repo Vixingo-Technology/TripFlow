@@ -1,8 +1,8 @@
 import React from "react";
 import { NavLink } from "react-router";
 
-import Logo from "./dynamic/Logo";
-import logo from "../assets/logo.png";
+import Logo from "../dynamic/Logo";
+import logo from "../../assets/logo.png";
 import {
     AppBar,
     Box,

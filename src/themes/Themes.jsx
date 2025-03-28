@@ -54,7 +54,7 @@ export const ThemeProvider = ({ children }) => {
                 h4: {
                     fontWeight: 500,
                     "@media (max-width:600px)": {
-                        fontSize: "1.9rem",
+                        fontSize: "1.8rem",
                     },
                 },
                 h5: {
@@ -62,7 +62,7 @@ export const ThemeProvider = ({ children }) => {
                     // lineHeight: "120%",
                     // fontWeight: "700",
                     "@media (max-width:600px)": {
-                        fontSize: "1.5rem",
+                        fontSize: "1.2rem",
                     },
                 },
             },
