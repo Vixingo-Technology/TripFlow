@@ -18,7 +18,7 @@ export const ThemeProvider = ({ children }) => {
                           secondary: { main: "#000000" },
                           background: {
                               default: "#000000",
-                              paper: "#3d000070",
+                              paper: "#210000",
                           },
                           text: { primary: "#ffffff", secondary: "#ededed" },
                       }

@@ -13,7 +13,7 @@ import BeenhereIcon from "@mui/icons-material/Beenhere";
 import StepConnector, {
     stepConnectorClasses,
 } from "@mui/material/StepConnector";
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Button, Card, Grid, Typography } from "@mui/material";
 
 import PlanForm from "../components/forms/PlanForm";
 import SummaryForm from "../components/forms/SummaryForm";
@@ -271,6 +271,9 @@ export default function Quote() {
         },
     ]);
 
+    // selected plan
+    const [selectedPlan, setSelectedPlan] = React.useState(null);
+
     React.useEffect(() => {
         console.log("risk", personName);
         console.log("value", value);
@@ -278,6 +281,7 @@ export default function Quote() {
         console.log("departureDate", departureDate);
         console.log("returnDate", returnDate);
         console.log("travelers", travelers);
+        console.log("selectedPlan", selectedPlan);
     });
     return (
         <Box
@@ -322,29 +326,83 @@ export default function Quote() {
             </Stepper>
             {activeStep === steps.length ? (
                 <React.Fragment>
-                    <Box
+                    <Grid
+                        container
+                        columns={12}
                         sx={{
                             maxWidth: "1200px",
                             mx: "auto",
                             px: 2,
+                            my: 5,
+                            alignItems: "center",
                         }}
                     >
-                        <Typography sx={{ mt: 2, mb: 1, color: "primary" }}>
-                            Thank You for your quote request!
-                        </Typography>
-                        <Box
-                            sx={{
-                                display: "flex",
-                                flexDirection: "row",
-                                pt: 2,
-                            }}
-                        >
-                            <Box sx={{ flex: "1 1 auto" }} />
-                            <Button onClick={handleReset} variant="contained">
-                                Get Another Quote{" "}
-                            </Button>
-                        </Box>
-                    </Box>
+                        <Grid size={{ xs: 12, md: 6 }}>
+                            <Card
+                                variant="outlined"
+                                sx={{ textAlign: "center", p: 2 }}
+                            >
+                                <Typography
+                                    variant="h2"
+                                    sx={{ mt: 2, mb: 1, color: "primary" }}
+                                >
+                                    Thank You!
+                                </Typography>
+                                <Typography variant="h4">
+                                    Your purchase is confirmed.
+                                </Typography>
+                                <br />
+                                <Typography variant="body1">
+                                    Your travel insurance is confirmed! Download
+                                    your policy below or check your email for
+                                    confirmation. Safe travels!
+                                </Typography>
+                                <Typography variant="h6" my={2}>
+                                    Policy Number: 123856865
+                                </Typography>
+                                <Box sx={{ display: "flex" }}>
+                                    <Button variant="contained" fullWidth>
+                                        Download PDF
+                                    </Button>
+                                    <Button variant="outlined" fullWidth>
+                                        Send Confirmation Email
+                                    </Button>
+                                </Box>
+                            </Card>
+                        </Grid>
+                        <Grid size={{ xs: 12, md: 6 }}>
+                            <Box
+                                sx={{
+                                    p: 2,
+                                }}
+                            >
+                                <Typography variant="h5">
+                                    Dear Mr. AYZ <br />
+                                    Thanks for taking Travel insurance from us.
+                                    It is very important that you read and
+                                    understand the terms conditions..... Here
+                                    are important docs related to your travel
+                                    insurance.
+                                </Typography>
+
+                                <Box
+                                    sx={{
+                                        mt: 3,
+                                        display: "flex",
+                                        justifyContent: "flex-end",
+                                    }}
+                                >
+                                    {" "}
+                                    <Button
+                                        onClick={handleReset}
+                                        variant="contained"
+                                    >
+                                        Get Another Quote{" "}
+                                    </Button>
+                                </Box>
+                            </Box>
+                        </Grid>
+                    </Grid>
                 </React.Fragment>
             ) : (
                 <React.Fragment>
@@ -375,7 +433,11 @@ export default function Quote() {
                                     handleNext={handleNext}
                                 />
                             ) : activeStep === 1 ? (
-                                <PlanForm />
+                                <PlanForm
+                                    setSelectedPlan={setSelectedPlan}
+                                    selectedPlan={selectedPlan}
+                                    handleNext={handleNext}
+                                />
                             ) : (
                                 <SummaryForm />
                             )}
@@ -389,7 +451,7 @@ export default function Quote() {
                             maxWidth: "1200px",
                             mx: "auto",
                             p: 2,
-                            bgcolor: "pink",
+                            // bgcolor: "pink",
                         }}
                     >
                         <Button
@@ -416,7 +478,7 @@ export default function Quote() {
                             variant="contained"
                         >
                             {activeStep === steps.length - 1
-                                ? "Finish"
+                                ? "Purchase"
                                 : "Next"}
                         </Button>
                     </Box>
