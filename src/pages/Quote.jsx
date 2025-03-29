@@ -18,6 +18,7 @@ import { Box, Button, Typography } from "@mui/material";
 import PlanForm from "../components/forms/PlanForm";
 import SummaryForm from "../components/forms/SummaryForm";
 import TavelForm from "../components/forms/TavelForm";
+import dayjs from "dayjs";
 
 const QontoConnector = styled(StepConnector)(({ theme }) => ({
     [`&.${stepConnectorClasses.alternativeLabel}`]: {
@@ -213,6 +214,7 @@ export default function Quote() {
     };
 
     const handleNext = () => {
+        window.scrollTo(0, 0);
         let newSkipped = skipped;
         if (isStepSkipped(activeStep)) {
             newSkipped = new Set(newSkipped.values());
@@ -245,6 +247,38 @@ export default function Quote() {
     const handleReset = () => {
         setActiveStep(0);
     };
+
+    // Form control
+    const [value, setValue] = React.useState("");
+
+    const handleChange = (event) => {
+        setValue(event.target.value);
+    };
+    // chip
+    const [personName, setPersonName] = React.useState([]);
+
+    const [destination, setDestination] = React.useState([]);
+    // departure date
+    const [departureDate, setDepartureDate] = React.useState();
+    // return date
+    const [returnDate, setReturnDate] = React.useState();
+    // travels
+    const [travelers, setTravelers] = React.useState([
+        {
+            id: 1,
+            birthMonth: "",
+            birthYear: "",
+        },
+    ]);
+
+    React.useEffect(() => {
+        console.log("risk", personName);
+        console.log("value", value);
+        console.log("destination", destination);
+        console.log("departureDate", departureDate);
+        console.log("returnDate", returnDate);
+        console.log("travelers", travelers);
+    });
     return (
         <Box
             sx={{
@@ -322,16 +356,30 @@ export default function Quote() {
                             px: 2,
                         }}
                     >
-                        <Typography sx={{ mt: 2, mb: 1 }} color="primary">
-                            Step {activeStep + 1}
+                        <Box sx={{ mt: 2, mb: 1 }}>
+                            {/* Step {activeStep + 1} */}
                             {activeStep === 0 ? (
-                                <TavelForm />
+                                <TavelForm
+                                    handleChange={handleChange}
+                                    value={value}
+                                    personName={personName}
+                                    setPersonName={setPersonName}
+                                    setDestination={setDestination}
+                                    destination={destination}
+                                    departureDate={departureDate}
+                                    setDepartureDate={setDepartureDate}
+                                    returnDate={returnDate}
+                                    setReturnDate={setReturnDate}
+                                    travelers={travelers}
+                                    setTravelers={setTravelers}
+                                    handleNext={handleNext}
+                                />
                             ) : activeStep === 1 ? (
                                 <PlanForm />
                             ) : (
                                 <SummaryForm />
                             )}
-                        </Typography>
+                        </Box>
                     </Box>
                     <Box
                         sx={{
@@ -362,7 +410,11 @@ export default function Quote() {
                                 Skip
                             </Button>
                         )} */}
-                        <Button onClick={handleNext} variant="contained">
+                        <Button
+                            onClick={handleNext}
+                            fullWidth
+                            variant="contained"
+                        >
                             {activeStep === steps.length - 1
                                 ? "Finish"
                                 : "Next"}
