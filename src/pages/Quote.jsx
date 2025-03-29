@@ -373,10 +373,10 @@ export default function Quote() {
                         <Grid size={{ xs: 12, md: 6 }}>
                             <Box
                                 sx={{
-                                    p: 2,
+                                    mt: 4,
                                 }}
                             >
-                                <Typography variant="h5">
+                                <Typography variant="h5" sx={{ m: 2 }}>
                                     Dear Mr. AYZ <br />
                                     Thanks for taking Travel insurance from us.
                                     It is very important that you read and

@@ -70,7 +70,7 @@ export default function PlanForm({
                 </Typography>
                 <Box>
                     {" "}
-                    <TableContainer component={Paper}>
+                    <TableContainer>
                         <Table>
                             <TableHead>
                                 <TableRow>
