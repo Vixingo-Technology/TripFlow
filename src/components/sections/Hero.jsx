@@ -13,7 +13,7 @@ export default function Hero() {
                 // columns={{ xs: 1, sm: 12 }}
                 direction={{ xs: "column-reverse", lg: "row" }}
                 sx={{
-                    mt: { xs: "80px", md: "12 0px" },
+                    mt: { xs: "80px", md: "12px" },
                     bgcolor: "secondary.main",
 
                     display: "flex",

@@ -287,7 +287,7 @@ export default function Quote() {
         <Box
             sx={{
                 width: "100%",
-                mt: { xs: "90px", md: "140px" },
+                // mt: { xs: "90px", md: "140px" },
                 maxWidth: "1820px",
                 mx: "auto",
                 p: 2,

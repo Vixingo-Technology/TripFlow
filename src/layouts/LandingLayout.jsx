@@ -7,12 +7,7 @@ export default function LandingLayout() {
     return (
         <>
             <Header />
-            <Box
-                sx={{
-                    maxWidth: "1820px",
-                    mx: "auto",
-                }}
-            >
+            <Box>
                 <Outlet />
             </Box>
             <Footer />

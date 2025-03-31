@@ -10,6 +10,7 @@ import Footer from "./components/footer/Footer";
 import Error from "./pages/Error";
 import QuoteLayout from "./layouts/QuoteLayout";
 import LandingLayout from "./layouts/LandingLayout";
+import Fire from "./pages/Fire";
 
 function App() {
     return (
@@ -19,9 +20,12 @@ function App() {
                     <Route path="/" element={<LandingLayout />}>
                         <Route path="/" element={<Home />} />
                     </Route>
+
                     <Route path="/" element={<QuoteLayout />}>
                         <Route path="/quote" element={<Quote />} />
+                        <Route path="/fire" element={<Fire />} />
                     </Route>
+
                     <Route path="*" element={<Error />} />
                 </Routes>
             </BrowserRouter>
