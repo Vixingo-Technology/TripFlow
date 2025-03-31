@@ -8,19 +8,22 @@ import { BrowserRouter, Route, Routes } from "react-router";
 import Header from "./components/Header/Header";
 import Footer from "./components/footer/Footer";
 import Error from "./pages/Error";
+import QuoteLayout from "./layouts/QuoteLayout";
+import LandingLayout from "./layouts/LandingLayout";
 
 function App() {
     return (
         <>
             <BrowserRouter>
-                <Header />
                 <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/quote" element={<Quote />} />
+                    <Route path="/" element={<LandingLayout />}>
+                        <Route path="/" element={<Home />} />
+                    </Route>
+                    <Route path="/" element={<QuoteLayout />}>
+                        <Route path="/quote" element={<Quote />} />
+                    </Route>
                     <Route path="*" element={<Error />} />
                 </Routes>
-
-                <Footer />
             </BrowserRouter>
         </>
     );
