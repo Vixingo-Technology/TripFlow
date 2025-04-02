@@ -22,7 +22,7 @@ export default function Term() {
                         mx: "auto",
                     }}
                 >
-                    <Grid item size={{ xs: 1, md: 6 }}>
+                    <Grid size={{ xs: 1, md: 6 }}>
                         <Typography variant="h3" color="primary" sx={{ mt: 5 }}>
                             Exclusions
                         </Typography>
@@ -62,7 +62,7 @@ export default function Term() {
                             <br />
                         </Typography>
                     </Grid>
-                    <Grid item size={{ xs: 1, md: 6 }}>
+                    <Grid size={{ xs: 1, md: 6 }}>
                         <Box maxWidth={"650px"} margin={"30px auto"}>
                             <img src={term} alt="" width={"100%"} />
                         </Box>

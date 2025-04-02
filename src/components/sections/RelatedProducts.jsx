@@ -10,7 +10,7 @@ export default function RelatedProducts() {
                 Related Products
             </Typography>
             <Grid container columns={12}>
-                <Grid item size={{ xs: 12, lg: 3 }}>
+                <Grid size={{ xs: 12, lg: 3 }}>
                     <ProductCard
                         icon={
                             <DirectionsCarIcon

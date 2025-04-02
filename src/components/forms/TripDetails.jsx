@@ -3,6 +3,7 @@ import {
     Button,
     Checkbox,
     Chip,
+    FormControl,
     Grid,
     InputLabel,
     MenuItem,
@@ -12,17 +13,15 @@ import {
     Stack,
     Typography,
     useTheme,
+    FormLabel,
+    RadioGroup,
+    FormControlLabel,
+    Radio,
 } from "@mui/material";
-import React from "react";
-import Radio from "@mui/material/Radio";
-import RadioGroup from "@mui/material/RadioGroup";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import FormControl from "@mui/material/FormControl";
-import FormLabel from "@mui/material/FormLabel";
 import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
-import dayjs from "dayjs";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
+import React from "react";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -88,21 +87,35 @@ function getStyles(name, personName, theme) {
     };
 }
 
-export default function TavelForm({
-    value,
-    handleChange,
-    personName,
-    setPersonName,
-    setDestination,
-    destination,
-    departureDate,
-    setDepartureDate,
-    returnDate,
-    setReturnDate,
-    travelers,
-    setTravelers,
-    handleNext,
-}) {
+export default function TripDetails() {
+    // Form control
+    const [value, setValue] = React.useState("");
+
+    const handleChange = (event) => {
+        setValue(event.target.value);
+    };
+    // chip
+    const [personName, setPersonName] = React.useState([]);
+
+    const [destination, setDestination] = React.useState([]);
+    // departure date
+    const [departureDate, setDepartureDate] = React.useState();
+    // return date
+    const [returnDate, setReturnDate] = React.useState();
+    // travels
+    const [travelers, setTravelers] = React.useState([
+        {
+            id: 1,
+            birthMonth: "",
+            birthYear: "",
+        },
+    ]);
+
+    // selected plan
+    const [selectedPlan, setSelectedPlan] = React.useState(null);
+
+    const [checked, setChecked] = React.useState(false);
+
     const theme = useTheme();
 
     const handleChip = (event) => {
@@ -124,7 +137,6 @@ export default function TavelForm({
             typeof value === "string" ? value.split(",") : value
         );
     };
-    const [checked, setChecked] = React.useState(false);
     // travelers
     const addTraveler = () => {
         setTravelers([
@@ -142,18 +154,26 @@ export default function TavelForm({
     const removeTraveler = (index) => {
         setTravelers(travelers.filter((_, i) => i !== index));
     };
+
+    React.useEffect(() => {
+        console.log("risk", personName);
+        console.log("value", value);
+        console.log("destination", destination);
+        console.log("departureDate", departureDate);
+        console.log("returnDate", returnDate);
+        console.log("travelers", travelers);
+        console.log("selectedPlan", selectedPlan);
+    });
     return (
-        <Paper elevation={3} sx={{ padding: 2, margin: "20px auto" }}>
-            <Typography
-                variant="h4"
-                color="primary"
-                my={2}
-                sx={{ textAlign: "center" }}
-            >
-                Tell Us Your Travel Details and Get a Quote
-            </Typography>
+        <>
             <Box
-                sx={{ display: "flex", flexDirection: "column", gap: 2, px: 1 }}
+                sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: 2,
+                    px: 1,
+                    py: 2,
+                }}
             >
                 <FormControl>
                     <FormLabel
@@ -237,6 +257,7 @@ export default function TavelForm({
                         ))}
                     </Select>
                 </FormControl>
+                {/*  */}
                 <Typography
                     sx={{
                         fontSize: 20,
@@ -288,6 +309,7 @@ export default function TavelForm({
                         ))}
                     </Select>
                 </FormControl>
+
                 <Grid container columns={12} spacing={2}>
                     <Grid size={{ xs: 12, md: 6 }}>
                         <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -409,7 +431,7 @@ export default function TavelForm({
                                             labelId="demo-simple-select-label"
                                             id="demo-simple-select"
                                             value={traveler.birthYear}
-                                            label="Birth Month"
+                                            label="Birth Year"
                                             onChange={(e) =>
                                                 updateTraveler(
                                                     index,
@@ -436,15 +458,6 @@ export default function TavelForm({
                     <>{/* <Typography>No Traveler Added</Typography> */}</>
                 )}
             </Box>
-            <Button
-                fullWidth
-                variant="contained"
-                onClick={handleNext}
-                sx={{ my: 2 }}
-            >
-                Continue
-            </Button>
-            {/* <Typography></Typography> */}
-        </Paper>
+        </>
     );
 }

@@ -22,7 +22,7 @@ export default function Explore() {
                         mx: "auto",
                     }}
                 >
-                    <Grid item size={{ xs: 1, md: 6 }}>
+                    <Grid size={{ xs: 1, md: 6 }}>
                         <Typography variant="h3" color="primary" sx={{ my: 5 }}>
                             Explore with confidence
                         </Typography>
@@ -38,7 +38,7 @@ export default function Explore() {
                             and emergency medical care.{" "}
                         </Typography>
                     </Grid>
-                    <Grid item size={{ xs: 1, md: 6 }}>
+                    <Grid size={{ xs: 1, md: 6 }}>
                         <Box maxWidth={"500px"} margin={"30px auto"}>
                             <img src={explore} alt="" width={"100%"} />
                         </Box>

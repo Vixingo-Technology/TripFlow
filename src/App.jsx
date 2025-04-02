@@ -11,6 +11,7 @@ import Error from "./pages/Error";
 import QuoteLayout from "./layouts/QuoteLayout";
 import LandingLayout from "./layouts/LandingLayout";
 import Fire from "./pages/Fire";
+import Insurance from "./pages/Insurance";
 
 function App() {
     return (
@@ -22,7 +23,8 @@ function App() {
                     </Route>
 
                     <Route path="/" element={<QuoteLayout />}>
-                        <Route path="/quote" element={<Quote />} />
+                        <Route path="/quote" element={<Insurance />} />
+                        {/* <Route path="/Insurance" element={<Insurance />} /> */}
                         <Route path="/fire" element={<Fire />} />
                     </Route>
 

@@ -19,12 +19,12 @@ export default function Help() {
                     px: 2,
                 }}
             >
-                <Grid item size={{ xs: 12, lg: 6 }}>
+                <Grid size={{ xs: 12, lg: 6 }}>
                     <Box sx={{ maxWidth: "600px", mx: "auto", mb: -0.7 }}>
                         <img src={wlh} alt="" width={"100%"} />
                     </Box>
                 </Grid>
-                <Grid item size={{ xs: 12, lg: 6 }}>
+                <Grid size={{ xs: 12, lg: 6 }}>
                     <Box sx={{ textAlign: { xs: "center", lg: "left" } }}>
                         <Typography
                             variant="h3"

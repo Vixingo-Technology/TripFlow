@@ -141,7 +141,7 @@ export default function Footer() {
                         }
                         columns={{ xs: 2, md: 12 }}
                     >
-                        <Grid item size={{ xs: 2, md: 3 }}>
+                        <Grid size={{ xs: 2, md: 3 }}>
                             <Box
                                 sx={{
                                     display: "flex",
@@ -178,18 +178,14 @@ export default function Footer() {
                                 </Box>
                             </Box>
                         </Grid>
-                        <Grid item size={{ xs: 2, md: 9 }}>
+                        <Grid size={{ xs: 2, md: 9 }}>
                             <Grid
                                 container
                                 spacing={2}
                                 columns={{ xs: 2, md: 12 }}
                             >
                                 {/* Developers */}
-                                <Grid
-                                    item
-                                    size={{ xs: 1, md: 4 }}
-                                    sx={{ mt: 1 }}
-                                >
+                                <Grid size={{ xs: 1, md: 4 }} sx={{ mt: 1 }}>
                                     <Typography
                                         variant="h6"
                                         sx={{ color: "primary.main", mb: 1 }}
@@ -212,11 +208,7 @@ export default function Footer() {
                                         )}
                                     </Stack>
                                 </Grid>
-                                <Grid
-                                    item
-                                    size={{ xs: 1, md: 4 }}
-                                    sx={{ mt: 1 }}
-                                >
+                                <Grid size={{ xs: 1, md: 4 }} sx={{ mt: 1 }}>
                                     <Typography
                                         variant="h6"
                                         sx={{ color: "primary.main", mb: 1 }}
@@ -237,11 +229,7 @@ export default function Footer() {
                                         ))}
                                     </Stack>
                                 </Grid>
-                                <Grid
-                                    item
-                                    size={{ xs: 1, md: 4 }}
-                                    sx={{ mt: 1 }}
-                                >
+                                <Grid size={{ xs: 1, md: 4 }} sx={{ mt: 1 }}>
                                     <Typography
                                         variant="h6"
                                         sx={{ color: "primary.main", mb: 1 }}
@@ -266,11 +254,7 @@ export default function Footer() {
                                 </Grid>
 
                                 {/* company */}
-                                <Grid
-                                    item
-                                    size={{ xs: 1, md: 4 }}
-                                    sx={{ mt: 1 }}
-                                >
+                                <Grid size={{ xs: 1, md: 4 }} sx={{ mt: 1 }}>
                                     <Typography
                                         variant="h6"
                                         sx={{ color: "primary.main", mb: 1 }}
@@ -294,11 +278,7 @@ export default function Footer() {
                                         )}
                                     </Stack>
                                 </Grid>
-                                <Grid
-                                    item
-                                    size={{ xs: 1, md: 4 }}
-                                    sx={{ mt: 1 }}
-                                >
+                                <Grid size={{ xs: 1, md: 4 }} sx={{ mt: 1 }}>
                                     <Typography
                                         variant="h6"
                                         sx={{ color: "primary.main", mb: 1 }}
@@ -319,11 +299,7 @@ export default function Footer() {
                                         ))}
                                     </Stack>
                                 </Grid>
-                                <Grid
-                                    item
-                                    size={{ xs: 1, md: 4 }}
-                                    sx={{ mt: 1 }}
-                                >
+                                <Grid size={{ xs: 1, md: 4 }} sx={{ mt: 1 }}>
                                     <Typography
                                         variant="h6"
                                         sx={{ color: "primary.main", mb: 1 }}

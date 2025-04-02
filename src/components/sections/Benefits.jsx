@@ -24,7 +24,7 @@ export default function Benefits() {
                     events:
                 </Typography>
                 <Grid container columns={12} sx={{ mt: 5 }}>
-                    <Grid item size={{ xs: 12, md: 6, lg: 4 }}>
+                    <Grid size={{ xs: 12, md: 6, lg: 4 }}>
                         <IconCard
                             icon={
                                 <LuggageIcon
@@ -37,7 +37,7 @@ export default function Benefits() {
                             }
                         />
                     </Grid>
-                    <Grid item size={{ xs: 12, md: 6, lg: 4 }}>
+                    <Grid size={{ xs: 12, md: 6, lg: 4 }}>
                         <IconCard
                             icon={
                                 <HealthAndSafetyIcon
@@ -52,7 +52,7 @@ export default function Benefits() {
                             }
                         />
                     </Grid>
-                    <Grid item size={{ xs: 12, md: 6, lg: 4 }}>
+                    <Grid size={{ xs: 12, md: 6, lg: 4 }}>
                         <IconCard
                             icon={
                                 <PersonalInjuryIcon
@@ -66,7 +66,7 @@ export default function Benefits() {
                         />
                     </Grid>
 
-                    <Grid item size={{ xs: 12, md: 6, lg: 4 }}>
+                    <Grid size={{ xs: 12, md: 6, lg: 4 }}>
                         <IconCard
                             icon={
                                 <FlightIcon
@@ -79,7 +79,7 @@ export default function Benefits() {
                             }
                         />
                     </Grid>
-                    <Grid item size={{ xs: 12, md: 6, lg: 4 }}>
+                    <Grid size={{ xs: 12, md: 6, lg: 4 }}>
                         <IconCard
                             icon={
                                 <AccessibleIcon
@@ -92,7 +92,7 @@ export default function Benefits() {
                             }
                         />
                     </Grid>
-                    <Grid item size={{ xs: 12, md: 6, lg: 4 }}>
+                    <Grid size={{ xs: 12, md: 6, lg: 4 }}>
                         <IconCard
                             icon={
                                 <RestartAltIcon

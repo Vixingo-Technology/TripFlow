@@ -222,14 +222,14 @@ const BenefitsTable = () => {
                         textAlign: "center",
                     }}
                 >
-                    <Grid item size={{ xs: 12, lg: 4 }}>
+                    <Grid size={{ xs: 12, lg: 4 }}>
                         <Typography variant="h6">Type</Typography>
                     </Grid>
 
-                    <Grid item size={{ xs: 6, lg: 4 }}>
+                    <Grid size={{ xs: 6, lg: 4 }}>
                         <Typography variant="h6">Employee</Typography>
                     </Grid>
-                    <Grid item size={{ xs: 6, lg: 4 }}>
+                    <Grid size={{ xs: 6, lg: 4 }}>
                         <Typography variant="h6">Dependent</Typography>
                     </Grid>
                 </Grid>
@@ -255,13 +255,13 @@ const BenefitsTable = () => {
                                 p: 2,
                             }}
                         >
-                            <Grid item size={{ xs: 12, lg: 4 }}>
+                            <Grid size={{ xs: 12, lg: 4 }}>
                                 <Typography variant="h6" p={1} fontWeight={600}>
                                     {row.type}
                                 </Typography>
                             </Grid>
                             {row.category ? (
-                                <Grid item size={{ xs: 12, lg: 12 }}>
+                                <Grid size={{ xs: 12, lg: 12 }}>
                                     <Typography
                                         pb={1}
                                         variant="h6"
@@ -282,12 +282,12 @@ const BenefitsTable = () => {
                             ) : (
                                 <></>
                             )}
-                            <Grid item size={{ xs: 6, lg: 4 }}>
+                            <Grid size={{ xs: 6, lg: 4 }}>
                                 <Typography variant="h6" pb={1}>
                                     {row.employee}
                                 </Typography>
                             </Grid>
-                            <Grid item size={{ xs: 6, lg: 4 }}>
+                            <Grid size={{ xs: 6, lg: 4 }}>
                                 <Typography variant="h6" pb={1}>
                                     {row.dependent}
                                 </Typography>
