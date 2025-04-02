@@ -27,11 +27,32 @@ const quoteSlice = createSlice({
         funeral: false,
         covid: false,
         covidSafe: "",
+        applicant: {
+            title: "Mr",
+            familyName: "",
+            givenName: "",
+            dateOfBirth: "",
+            age: "",
+            gender: "",
+            passport: "",
+            phoneNumber: "",
+            email: "",
+            city: "",
+            district: "",
+            commune: "",
+            village: "",
+            houseNo: "",
+            streetNo: "",
+        },
     },
     reducers: {
         updateQuoteData: (state, action) => {
             const { field, value } = action.payload;
             state[field] = value;
+        },
+        updateApplicantData: (state, action) => {
+            const { field, value } = action.payload;
+            state.applicant[field] = value;
         },
         addRiskType: (state, action) => {
             state.riskType = action.payload;
@@ -77,7 +98,7 @@ export const {
     addTravelers,
     isFuneral,
     isCovid,
-
+    updateApplicantData,
     resetQuote,
 } = quoteSlice.actions;
 export default quoteSlice.reducer;
