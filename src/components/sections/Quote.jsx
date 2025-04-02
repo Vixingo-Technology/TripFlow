@@ -9,6 +9,8 @@ import Button from "@mui/material/Button";
 import TavelForm from "../forms/TavelForm";
 import { Box } from "@mui/material";
 import TripDetails from "../forms/TripDetails";
+import OptionalForm from "../forms/OptionalForm";
+import ApplicantForm from "../forms/ApplicantForm";
 
 export default function Quote() {
     return (
@@ -46,9 +48,7 @@ export default function Quote() {
                     </Typography>
                 </AccordionSummary>
                 <AccordionDetails>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Suspendisse malesuada lacus ex, sit amet blandit leo
-                    lobortis eget.
+                    <OptionalForm />
                 </AccordionDetails>
             </Accordion>
             <Accordion defaultExpanded>
@@ -90,9 +90,7 @@ export default function Quote() {
                     </Typography>
                 </AccordionSummary>
                 <AccordionDetails>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Suspendisse malesuada lacus ex, sit amet blandit leo
-                    lobortis eget.
+                    <ApplicantForm />
                 </AccordionDetails>
                 <AccordionActions>
                     <Button>Cancel</Button>

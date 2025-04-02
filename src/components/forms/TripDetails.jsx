@@ -22,6 +22,16 @@ import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+    updateQuoteData,
+    addDestination,
+    addRiskType,
+    addDepartureDate,
+    addReturnDate,
+    isGroupTravel,
+    addTravelers,
+} from "../../utils/slice/Quote";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -79,52 +89,23 @@ const birthYears = Array.from({ length: 100 }, (_, index) => {
     return { label: `${year}`, value: `${year}` };
 });
 
-function getStyles(name, personName, theme) {
-    return {
-        fontWeight: personName.includes(name)
-            ? theme.typography.fontWeightMedium
-            : theme.typography.fontWeightRegular,
-    };
-}
-
 export default function TripDetails() {
-    // Form control
-    const [value, setValue] = React.useState("");
-
-    const handleChange = (event) => {
-        setValue(event.target.value);
+    const dispatch = useDispatch();
+    const userData = useSelector((state) => state.quote);
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        dispatch(updateQuoteData({ field: name, value })); // Dispatch the update action
     };
-    // chip
-    const [personName, setPersonName] = React.useState([]);
-
-    const [destination, setDestination] = React.useState([]);
-    // departure date
-    const [departureDate, setDepartureDate] = React.useState();
-    // return date
-    const [returnDate, setReturnDate] = React.useState();
-    // travels
-    const [travelers, setTravelers] = React.useState([
-        {
-            id: 1,
-            birthMonth: "",
-            birthYear: "",
-        },
-    ]);
-
-    // selected plan
-    const [selectedPlan, setSelectedPlan] = React.useState(null);
-
-    const [checked, setChecked] = React.useState(false);
-
-    const theme = useTheme();
 
     const handleChip = (event) => {
         const {
             target: { value },
         } = event;
-        setPersonName(
-            // On autofill we get a stringified value.
-            typeof value === "string" ? value.split(",") : value
+        dispatch(
+            addRiskType(
+                // On autofill we get a stringified value.
+                typeof value === "string" ? value.split(",") : value
+            )
         );
     };
 
@@ -132,38 +113,37 @@ export default function TripDetails() {
         const {
             target: { value },
         } = event;
-        setDestination(
-            // On autofill we get a stringified value.
-            typeof value === "string" ? value.split(",") : value
+        dispatch(
+            addDestination(
+                // On autofill we get a stringified value.
+                typeof value === "string" ? value.split(",") : value
+            )
         );
     };
     // travelers
     const addTraveler = () => {
-        setTravelers([
-            ...travelers,
-            { id: travelers.length + 1, birthMonth: "", birthYear: "" },
-        ]);
+        dispatch(
+            addTravelers([
+                ...userData.travelers,
+                {
+                    id: userData.travelers.length + 1,
+                    birthMonth: "",
+                    birthYear: "",
+                },
+            ])
+        );
     };
 
     const updateTraveler = (index, field, value) => {
-        const updatedTravelers = travelers.map((traveler, i) =>
+        const updatedTravelers = userData.travelers.map((traveler, i) =>
             i === index ? { ...traveler, [field]: value } : traveler
         );
-        setTravelers(updatedTravelers);
+        dispatch(addTravelers(updatedTravelers));
     };
-    const removeTraveler = (index) => {
-        setTravelers(travelers.filter((_, i) => i !== index));
-    };
+    // const removeTraveler = (index) => {
+    //     dispatch(useDispatch(travelers.filter((_, i) => i !== index)));
+    // };
 
-    React.useEffect(() => {
-        console.log("risk", personName);
-        console.log("value", value);
-        console.log("destination", destination);
-        console.log("departureDate", departureDate);
-        console.log("returnDate", returnDate);
-        console.log("travelers", travelers);
-        console.log("selectedPlan", selectedPlan);
-    });
     return (
         <>
             <Box
@@ -177,7 +157,7 @@ export default function TripDetails() {
             >
                 <FormControl>
                     <FormLabel
-                        id="demo-controlled-radio-buttons-group"
+                        id="tripType"
                         sx={{
                             mb: 1,
                             fontWeight: "bold",
@@ -188,9 +168,9 @@ export default function TripDetails() {
                         Trip Type
                     </FormLabel>
                     <RadioGroup
-                        aria-labelledby="demo-controlled-radio-buttons-group"
-                        name="controlled-radio-buttons-group"
-                        value={value}
+                        aria-labelledby="tripType"
+                        name="tripType"
+                        value={userData.tripType}
                         onChange={handleChange}
                         row
                     >
@@ -223,7 +203,7 @@ export default function TripDetails() {
                         labelId="demo-multiple-chip-label"
                         id="demo-multiple-chip"
                         multiple
-                        value={personName}
+                        value={userData.riskType}
                         onChange={handleChip}
                         input={
                             <OutlinedInput
@@ -247,11 +227,7 @@ export default function TripDetails() {
                         MenuProps={MenuProps}
                     >
                         {travelInsuranceCoverage.map((name) => (
-                            <MenuItem
-                                key={name}
-                                value={name}
-                                style={getStyles(name, personName, theme)}
-                            >
+                            <MenuItem key={name} value={name}>
                                 {name}
                             </MenuItem>
                         ))}
@@ -275,7 +251,7 @@ export default function TripDetails() {
                         labelId="demo-multiple-chip-label"
                         id="demo-multiple-chip"
                         multiple
-                        value={destination}
+                        value={userData.destination}
                         onChange={handleCountry}
                         input={
                             <OutlinedInput
@@ -299,11 +275,7 @@ export default function TripDetails() {
                         MenuProps={MenuProps}
                     >
                         {countries.map((name) => (
-                            <MenuItem
-                                key={name}
-                                value={name}
-                                style={getStyles(name, personName, theme)}
-                            >
+                            <MenuItem key={name} value={name}>
                                 {name}
                             </MenuItem>
                         ))}
@@ -319,9 +291,9 @@ export default function TripDetails() {
                                 <DatePicker
                                     sx={{ width: "100%" }}
                                     label="Departure Date"
-                                    value={departureDate}
+                                    value={userData.departureDate}
                                     onChange={(newValue) =>
-                                        setDepartureDate(newValue)
+                                        dispatch(addDepartureDate(newValue))
                                     }
                                 />
                             </DemoContainer>
@@ -335,9 +307,9 @@ export default function TripDetails() {
                                 <DatePicker
                                     sx={{ width: "100%" }}
                                     label="Return Date"
-                                    value={returnDate}
+                                    value={userData.returnDate}
                                     onChange={(newValue) =>
-                                        setReturnDate(newValue)
+                                        dispatch(addReturnDate(newValue))
                                     }
                                 />
                             </DemoContainer>
@@ -348,16 +320,16 @@ export default function TripDetails() {
                 <FormControlLabel
                     control={
                         <Checkbox
-                            checked={checked}
+                            checked={userData.groupTravel}
                             onChange={(event) =>
-                                setChecked(event.target.checked)
+                                dispatch(isGroupTravel(event.target.checked))
                             }
                             inputProps={{ "aria-label": "controlled" }}
                         />
                     }
                     label="Group Travel"
                 />
-                {checked ? (
+                {userData.groupTravel ? (
                     <>
                         <Stack
                             display={"flex"}
@@ -369,7 +341,7 @@ export default function TripDetails() {
                                 Add Traveler
                             </Button>
                         </Stack>
-                        {travelers.map((traveler, index) => (
+                        {userData.travelers.map((traveler, index) => (
                             <Grid
                                 container
                                 columns={12}
