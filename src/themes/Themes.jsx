@@ -13,12 +13,12 @@ export const ThemeProvider = ({ children }) => {
                 ...(mode === "dark"
                     ? {
                           primary: {
-                              main: "#ff000090",
+                              main: "#EF443B",
                           },
                           secondary: { main: "#000000" },
                           background: {
-                              default: "#000000",
-                              paper: "#210000",
+                              default: "#1A1A1A",
+                              paper: "#262626",
                           },
                           text: { primary: "#ffffff", secondary: "#ededed" },
                       }
@@ -50,14 +50,14 @@ export const ThemeProvider = ({ children }) => {
                     },
                 },
                 h3: {
-                    textShadow: " 0 0 0px #ffffff",
+                    // textShadow: " 0 0 0px #ffffff",
                     fontWeight: 500,
                     "@media (max-width:600px)": {
                         fontSize: "2.2rem",
                     },
                 },
                 h4: {
-                    textShadow: " 0 0 0px #ffffff",
+                    // textShadow: " 0 0 0px #ffffff",
 
                     fontWeight: 500,
                     "@media (max-width:600px)": {
@@ -74,7 +74,7 @@ export const ThemeProvider = ({ children }) => {
                     },
                 },
                 h6: {
-                    textShadow: " 0 0 0px #ffffff",
+                    // textShadow: " 0 0 0px #ffffff",
                 },
             },
             components: {

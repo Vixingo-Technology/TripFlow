@@ -10,6 +10,7 @@ export default function GetQuote() {
                 maxWidth: "1820px",
                 px: 2,
                 pb: 5,
+                mx: "auto",
             }}
         >
             <Typography variant="h3" color="primary" sx={{ mt: 5 }}>

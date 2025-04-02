@@ -31,10 +31,11 @@ const quoteSlice = createSlice({
             title: "Mr",
             familyName: "",
             givenName: "",
-            dateOfBirth: "",
+            dateOfBirth: null,
             age: "",
             gender: "",
             passport: "",
+            countryCode: "",
             phoneNumber: "",
             email: "",
             city: "",
@@ -78,6 +79,9 @@ const quoteSlice = createSlice({
         isCovid: (state, action) => {
             state.covid = action.payload;
         },
+        addDateOfBirth: (state, action) => {
+            state.applicant.dateOfBirth = action.payload;
+        },
 
         resetQuote: (state) => {
             // Reset the form to initial state
@@ -99,6 +103,7 @@ export const {
     isFuneral,
     isCovid,
     updateApplicantData,
+    addDateOfBirth,
     resetQuote,
 } = quoteSlice.actions;
 export default quoteSlice.reducer;

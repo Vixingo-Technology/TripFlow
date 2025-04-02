@@ -7,16 +7,18 @@ import Header from "../components/Header/Header";
 export default function QuoteLayout() {
     return (
         <>
-            <MiniHeader />
+            <Box sx={{ backgroundColor: "background.default" }}>
+                <MiniHeader />
 
-            <Box
-                sx={{
-                    maxWidth: "1820px",
-                    mx: "auto",
-                    px: 2,
-                }}
-            >
-                <Outlet />
+                <Box
+                    sx={{
+                        maxWidth: "1820px",
+                        mx: "auto",
+                        px: 2,
+                    }}
+                >
+                    <Outlet />
+                </Box>
             </Box>
         </>
     );
