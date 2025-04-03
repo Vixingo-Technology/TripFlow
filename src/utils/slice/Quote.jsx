@@ -27,6 +27,7 @@ const quoteSlice = createSlice({
         funeral: false,
         covid: false,
         covidSafe: "",
+        selectedPlan: "",
         applicant: {
             title: "Mr",
             familyName: "",
@@ -106,6 +107,9 @@ const quoteSlice = createSlice({
         isAccepted: (state, action) => {
             state.acceptTerms = action.payload;
         },
+        addSelectedPlan: (state, action) => {
+            state.selectedPlan = action.payload;
+        },
         resetQuote: (state) => {
             // Reset the form to initial state
             state.name = "";
@@ -132,5 +136,6 @@ export const {
     updateChild,
     updateBeneficiaryData,
     isAccepted,
+    addSelectedPlan,
 } = quoteSlice.actions;
 export default quoteSlice.reducer;

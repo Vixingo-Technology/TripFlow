@@ -12,7 +12,7 @@ export default function QuoteLayout() {
 
                 <Box
                     sx={{
-                        maxWidth: "1820px",
+                        maxWidth: "1280px",
                         mx: "auto",
                         px: 2,
                     }}

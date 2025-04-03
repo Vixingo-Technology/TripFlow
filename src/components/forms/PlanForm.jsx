@@ -13,6 +13,9 @@ import {
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import CancelIcon from "@mui/icons-material/Cancel";
 import { green, red } from "@mui/material/colors";
+import { useDispatch, useSelector } from "react-redux";
+import { addSelectedPlan } from "../../utils/slice/Quote";
+import VerifiedIcon from "@mui/icons-material/Verified";
 
 const plans = [
     {
@@ -51,10 +54,13 @@ export default function PlanForm({
     setSelectedPlan,
     handleNext,
 }) {
+    const dispatch = useDispatch();
+    const userData = useSelector((state) => state.quote);
+
     const handleSelectPlan = (planName) => {
-        setSelectedPlan(planName);
+        dispatch(addSelectedPlan(planName));
         console.log("Selected Plan:", planName);
-        handleNext();
+        // handleNext();
     };
 
     return (
@@ -164,9 +170,24 @@ export default function PlanForm({
                                         >
                                             <Button
                                                 variant="contained"
-                                                color="primary"
+                                                fullWidth
+                                                size="large"
+                                                color={
+                                                    userData.selectedPlan ==
+                                                    plan.name
+                                                        ? "primary"
+                                                        : "secondary"
+                                                }
                                                 onClick={() =>
                                                     handleSelectPlan(plan.name)
+                                                }
+                                                endIcon={
+                                                    userData.selectedPlan ==
+                                                    plan.name ? (
+                                                        <VerifiedIcon />
+                                                    ) : (
+                                                        ""
+                                                    )
                                                 }
                                             >
                                                 Select Plan

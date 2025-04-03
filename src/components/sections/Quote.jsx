@@ -26,8 +26,9 @@ export default function Quote() {
                 >
                     <Typography
                         component="span"
-                        variant="h5"
+                        variant="h4"
                         color="primary.main"
+                        textTransform={"uppercase"}
                     >
                         Trip Details
                     </Typography>
@@ -44,8 +45,9 @@ export default function Quote() {
                 >
                     <Typography
                         component="span"
-                        variant="h5"
+                        variant="h4"
                         color="primary.main"
+                        textTransform={"uppercase"}
                     >
                         Optional Benifits
                     </Typography>
@@ -62,8 +64,9 @@ export default function Quote() {
                 >
                     <Typography
                         component="span"
-                        variant="h5"
+                        variant="h4"
                         color="primary.main"
+                        textTransform={"uppercase"}
                     >
                         Cover plan and Premium
                     </Typography>
@@ -84,8 +87,9 @@ export default function Quote() {
                 >
                     <Typography
                         component="span"
-                        variant="h5"
+                        variant="h4"
                         color="primary.main"
+                        textTransform={"uppercase"}
                     >
                         Aplicant Details
                     </Typography>
@@ -97,7 +101,7 @@ export default function Quote() {
                  
                 </AccordionActions> */}
             </Accordion>
-            <Accordion defaultExpanded>
+            <Accordion>
                 <AccordionSummary
                     expandIcon={<ExpandMoreIcon />}
                     aria-controls="panel3-content"
@@ -105,8 +109,9 @@ export default function Quote() {
                 >
                     <Typography
                         component="span"
-                        variant="h5"
+                        variant="h4"
                         color="primary.main"
+                        textTransform={"uppercase"}
                     >
                         Beneficiary
                     </Typography>
@@ -127,8 +132,9 @@ export default function Quote() {
                 >
                     <Typography
                         component="span"
-                        variant="h5"
+                        variant="h4"
                         color="primary.main"
+                        textTransform={"uppercase"}
                     >
                         Declaration
                     </Typography>
@@ -137,9 +143,19 @@ export default function Quote() {
                     <DeclarationForm />
                 </AccordionDetails>
             </Accordion>
-            <Box>
-                <Button variant="outlined">Back</Button>
-                <Button variant="contained">Generate Quote</Button>
+            <Box
+                sx={{
+                    pb: 4,
+                    display: "flex",
+                    gap: 2,
+                }}
+            >
+                <Button variant="outlined" size="large">
+                    Back
+                </Button>
+                <Button variant="contained" size="large">
+                    Generate Quote
+                </Button>
             </Box>
         </Box>
     );
