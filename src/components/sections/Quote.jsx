@@ -14,6 +14,7 @@ import ApplicantForm from "../forms/ApplicantForm";
 import BeneficiaryForm from "../forms/BeneficiaryForm";
 import DeclarationForm from "../forms/DeclarationForm";
 import PlanForm from "../forms/PlanForm";
+import { NavLink } from "react-router";
 
 export default function Quote() {
     return (
@@ -148,14 +149,17 @@ export default function Quote() {
                     pb: 4,
                     display: "flex",
                     gap: 2,
+                    mt: 2,
                 }}
             >
                 <Button variant="outlined" size="large">
                     Back
                 </Button>
-                <Button variant="contained" size="large">
-                    Generate Quote
-                </Button>
+                <NavLink to={"/summary"}>
+                    <Button variant="contained" size="large">
+                        Generate Quote
+                    </Button>
+                </NavLink>
             </Box>
         </Box>
     );

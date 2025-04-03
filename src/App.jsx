@@ -12,6 +12,7 @@ import QuoteLayout from "./layouts/QuoteLayout";
 import LandingLayout from "./layouts/LandingLayout";
 import Fire from "./pages/Fire";
 import Insurance from "./pages/Insurance";
+import Summary from "./pages/Summary";
 
 function App() {
     return (
@@ -24,6 +25,7 @@ function App() {
 
                     <Route path="/" element={<QuoteLayout />}>
                         <Route path="/quote" element={<Insurance />} />
+                        {/* <Route path="/summary" element={<Summary />} /> */}
                         <Route path="/Insurance" element={<Quote />} />
                         <Route path="/fire" element={<Fire />} />
                     </Route>
