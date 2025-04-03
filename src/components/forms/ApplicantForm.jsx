@@ -1,5 +1,6 @@
 import {
     Box,
+    Button,
     FormControl,
     Grid,
     InputLabel,
@@ -11,6 +12,7 @@ import {
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
+    addChilds,
     addDateOfBirth,
     updateApplicantData,
     updateQuoteData,
@@ -60,6 +62,34 @@ export default function ApplicantForm() {
         const { name, value } = e.target;
         dispatch(updateApplicantData({ field: name, value })); // Dispatch the update action
     };
+
+    // add child
+    const addChild = () => {
+        dispatch(
+            addChilds([
+                ...userData.childs,
+                {
+                    id: userData.childs.length + 1,
+                    familyName: "",
+                    givenName: "",
+                    passport: "",
+                    dateOfBirth: null,
+                    age: "",
+                },
+            ])
+        );
+    };
+
+    const updateChild = (index, field, value) => {
+        const updatedTravelers = userData.childs.map((child, i) =>
+            i === index ? { ...child, [field]: value } : child
+        );
+        dispatch(addChilds(updatedTravelers));
+    };
+    const removeChild = (index) => {
+        dispatch(addChilds(userData.childs.filter((_, i) => i !== index)));
+    };
+
     return (
         <>
             <Grid container spacing={2} mb={2}>
@@ -222,8 +252,219 @@ export default function ApplicantForm() {
                     />
                 </Grid>
             </Grid>
+            <Grid container spacing={2} mb={2}>
+                <Grid size={{ xs: 12, md: 6 }}>
+                    <TextField
+                        value={userData.email}
+                        variant="outlined"
+                        label="Email*"
+                        name="email"
+                        onChange={handleChange}
+                        sx={{ flex: 1 }}
+                        placeholder="Enter your email"
+                        fullWidth
+                    />
+                </Grid>
+                <Grid size={{ xs: 12, md: 6 }}>
+                    <TextField
+                        value={userData.city}
+                        variant="outlined"
+                        label="City - Province*"
+                        name="city"
+                        placeholder="Enter City - Province"
+                        onChange={handleChange}
+                        sx={{ flex: 4 }}
+                        fullWidth
+                    />
+                </Grid>
+            </Grid>
+            <Grid container spacing={2} mb={2}>
+                <Grid size={{ xs: 12, md: 6 }}>
+                    <TextField
+                        value={userData.district}
+                        variant="outlined"
+                        label="District*"
+                        name="district"
+                        onChange={handleChange}
+                        sx={{ flex: 1 }}
+                        placeholder="Enter District"
+                        fullWidth
+                    />
+                </Grid>
+                <Grid size={{ xs: 12, md: 6 }}>
+                    <TextField
+                        value={userData.commune}
+                        variant="outlined"
+                        label="Commune*"
+                        name="commune"
+                        placeholder="Enter Commune"
+                        onChange={handleChange}
+                        sx={{ flex: 4 }}
+                        fullWidth
+                    />
+                </Grid>
+            </Grid>
+            <Grid container spacing={2} mb={2}>
+                <Grid size={{ xs: 12, md: 6 }}>
+                    <TextField
+                        value={userData.village}
+                        variant="outlined"
+                        label="Village*"
+                        name="village"
+                        onChange={handleChange}
+                        sx={{ flex: 1 }}
+                        placeholder="Enter Village Name"
+                        fullWidth
+                    />
+                </Grid>
+                <Grid size={{ xs: 12, md: 6 }} sx={{ display: "flex", gap: 2 }}>
+                    <TextField
+                        value={userData.houseNo}
+                        variant="outlined"
+                        label="House No*"
+                        name="houseNo"
+                        onChange={handleChange}
+                        // sx={{ flex: 1 }}
+                        placeholder="Enter House Number"
+                        fullWidth
+                    />
+                    <TextField
+                        value={userData.streetNo}
+                        variant="outlined"
+                        label="Street No*"
+                        name="streetNo"
+                        onChange={handleChange}
+                        // sx={{ flex: 1 }}
+                        placeholder="Enter Street Number"
+                        fullWidth
+                    />
+                </Grid>
+            </Grid>
+            <Typography sx={{ mb: 1 }}>Full Address</Typography>
+            <Typography
+                variant="h6"
+                sx={{ backgroundColor: "secondary.main", color: "#fff", p: 1 }}
+            >
+                {[
+                    userData.city,
+                    userData.district,
+                    userData.commune,
+                    userData.village,
+                    userData.houseNo,
+                    userData.streetNo,
+                ]
+                    .filter((value) => value)
+                    .join(", ")}
+                , CAMBODIA
+            </Typography>
 
-            <Typography>{userData.title}</Typography>
+            {userData.childs.map((child, index) => (
+                <>
+                    <Typography variant="h6" my={2}>
+                        Child {child.id}
+                    </Typography>
+                    <Grid
+                        container
+                        columns={12}
+                        spacing={2}
+                        sx={{ my: 1 }}
+                        key={child.id}
+                    >
+                        <Grid size={{ xs: 12, md: 4 }}>
+                            <TextField
+                                value={child.familyName}
+                                variant="outlined"
+                                label="Family Name"
+                                onChange={(e) =>
+                                    updateChild(
+                                        index,
+                                        "familyName",
+                                        e.target.value
+                                    )
+                                }
+                                fullWidth
+                            />
+                        </Grid>
+                        <Grid size={{ xs: 12, md: 4 }}>
+                            <TextField
+                                value={child.givenName}
+                                variant="outlined"
+                                label="Given Name"
+                                onChange={(e) =>
+                                    updateChild(
+                                        index,
+                                        "givenName",
+                                        e.target.value
+                                    )
+                                }
+                                fullWidth
+                            />
+                        </Grid>
+                        <Grid size={{ xs: 12, md: 4 }}>
+                            <TextField
+                                value={child.passport}
+                                variant="outlined"
+                                label="Passport"
+                                onChange={(e) =>
+                                    updateChild(
+                                        index,
+                                        "passport",
+                                        e.target.value
+                                    )
+                                }
+                                fullWidth
+                            />
+                        </Grid>
+                        <Grid size={{ xs: 12, md: 4 }}>
+                            <LocalizationProvider dateAdapter={AdapterDayjs}>
+                                <DatePicker
+                                    label="Date of Birth"
+                                    value={child.dateOfBirth}
+                                    onChange={(newValue) =>
+                                        updateChild(
+                                            index,
+                                            "dateOfBirth",
+                                            newValue
+                                        )
+                                    }
+                                    sx={{ width: "100%" }}
+                                />
+                            </LocalizationProvider>
+                        </Grid>
+                        <Grid size={{ xs: 12, md: 4 }}>
+                            <TextField
+                                value={child.age}
+                                variant="outlined"
+                                label="Age"
+                                onChange={(e) =>
+                                    updateChild(index, "age", e.target.value)
+                                }
+                                fullWidth
+                            />
+                        </Grid>
+                        <Grid size={{ xs: 12, md: 4 }}>
+                            <Button
+                                fullWidth
+                                variant="outlined"
+                                color="error"
+                                onClick={() => removeChild(index)}
+                                sx={{ height: "100%" }}
+                            >
+                                Remove Child
+                            </Button>
+                        </Grid>
+                    </Grid>
+                </>
+            ))}
+            <Button
+                variant="contained"
+                onClick={addChild}
+                size="large"
+                sx={{ my: 2 }}
+                fullWidth
+            >
+                Add Child
+            </Button>
         </>
     );
 }

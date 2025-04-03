@@ -44,7 +44,17 @@ const quoteSlice = createSlice({
             village: "",
             houseNo: "",
             streetNo: "",
+            childs: [],
         },
+        beneficiary: {
+            familyName: "",
+            givenName: "",
+            gender: "",
+            relationship: "",
+            phoneNumber: "",
+            countryCode: "",
+        },
+        acceptTerms: false,
     },
     reducers: {
         updateQuoteData: (state, action) => {
@@ -54,6 +64,10 @@ const quoteSlice = createSlice({
         updateApplicantData: (state, action) => {
             const { field, value } = action.payload;
             state.applicant[field] = value;
+        },
+        updateBeneficiaryData: (state, action) => {
+            const { field, value } = action.payload;
+            state.beneficiary[field] = value;
         },
         addRiskType: (state, action) => {
             state.riskType = action.payload;
@@ -82,7 +96,16 @@ const quoteSlice = createSlice({
         addDateOfBirth: (state, action) => {
             state.applicant.dateOfBirth = action.payload;
         },
-
+        addChilds: (state, action) => {
+            state.applicant.childs = action.payload;
+        },
+        updateChild: (state, action) => {
+            const { index, field, value } = action.payload;
+            state.applicant.childs[index][field] = value;
+        },
+        isAccepted: (state, action) => {
+            state.acceptTerms = action.payload;
+        },
         resetQuote: (state) => {
             // Reset the form to initial state
             state.name = "";
@@ -105,5 +128,9 @@ export const {
     updateApplicantData,
     addDateOfBirth,
     resetQuote,
+    addChilds,
+    updateChild,
+    updateBeneficiaryData,
+    isAccepted,
 } = quoteSlice.actions;
 export default quoteSlice.reducer;

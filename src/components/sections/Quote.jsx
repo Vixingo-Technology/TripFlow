@@ -11,11 +11,14 @@ import { Box } from "@mui/material";
 import TripDetails from "../forms/TripDetails";
 import OptionalForm from "../forms/OptionalForm";
 import ApplicantForm from "../forms/ApplicantForm";
+import BeneficiaryForm from "../forms/BeneficiaryForm";
+import DeclarationForm from "../forms/DeclarationForm";
+import PlanForm from "../forms/PlanForm";
 
 export default function Quote() {
     return (
         <Box sx={{ mt: 2 }}>
-            <Accordion>
+            <Accordion defaultExpanded>
                 <AccordionSummary
                     expandIcon={<ExpandMoreIcon />}
                     aria-controls="panel1-content"
@@ -33,7 +36,7 @@ export default function Quote() {
                     <TripDetails />
                 </AccordionDetails>
             </Accordion>
-            <Accordion>
+            <Accordion defaultExpanded>
                 <AccordionSummary
                     expandIcon={<ExpandMoreIcon />}
                     aria-controls="panel2-content"
@@ -66,14 +69,12 @@ export default function Quote() {
                     </Typography>
                 </AccordionSummary>
                 <AccordionDetails>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Suspendisse malesuada lacus ex, sit amet blandit leo
-                    lobortis eget.
+                    <PlanForm />
                 </AccordionDetails>
-                <AccordionActions>
+                {/* <AccordionActions>
                     <Button>Cancel</Button>
                     <Button>Agree</Button>
-                </AccordionActions>
+                </AccordionActions> */}
             </Accordion>
             <Accordion defaultExpanded>
                 <AccordionSummary
@@ -92,10 +93,9 @@ export default function Quote() {
                 <AccordionDetails>
                     <ApplicantForm />
                 </AccordionDetails>
-                <AccordionActions>
-                    <Button>Cancel</Button>
-                    <Button>Agree</Button>
-                </AccordionActions>
+                {/* <AccordionActions>
+                 
+                </AccordionActions> */}
             </Accordion>
             <Accordion defaultExpanded>
                 <AccordionSummary
@@ -108,18 +108,16 @@ export default function Quote() {
                         variant="h5"
                         color="primary.main"
                     >
-                        Aplicant Details
+                        Beneficiary
                     </Typography>
                 </AccordionSummary>
                 <AccordionDetails>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Suspendisse malesuada lacus ex, sit amet blandit leo
-                    lobortis eget.
+                    <BeneficiaryForm />
                 </AccordionDetails>
-                <AccordionActions>
+                {/* <AccordionActions>
                     <Button>Cancel</Button>
                     <Button>Agree</Button>
-                </AccordionActions>
+                </AccordionActions> */}
             </Accordion>
             <Accordion defaultExpanded>
                 <AccordionSummary
@@ -132,19 +130,17 @@ export default function Quote() {
                         variant="h5"
                         color="primary.main"
                     >
-                        Aplicant Details
+                        Declaration
                     </Typography>
                 </AccordionSummary>
                 <AccordionDetails>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Suspendisse malesuada lacus ex, sit amet blandit leo
-                    lobortis eget.
+                    <DeclarationForm />
                 </AccordionDetails>
-                <AccordionActions>
-                    <Button>Cancel</Button>
-                    <Button>Agree</Button>
-                </AccordionActions>
             </Accordion>
+            <Box>
+                <Button variant="outlined">Back</Button>
+                <Button variant="contained">Generate Quote</Button>
+            </Box>
         </Box>
     );
 }

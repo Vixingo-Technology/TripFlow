@@ -59,26 +59,39 @@ export default function PlanForm({
 
     return (
         <>
-            <Paper elevation={3} sx={{ padding: 2, margin: "20px auto" }}>
-                <Typography
+            <Box sx={{ my: 2 }}>
+                {/* <Typography
                     variant="h4"
                     color="primary"
                     my={2}
                     sx={{ textAlign: "center" }}
                 >
                     Plan and Benefits
-                </Typography>
+                </Typography> */}
                 <Box>
                     {" "}
                     <TableContainer>
                         <Table>
                             <TableHead>
-                                <TableRow>
-                                    <TableCell>Features</TableCell>
+                                <TableRow
+                                    sx={{
+                                        bgcolor: "secondary.main",
+                                    }}
+                                >
+                                    <TableCell
+                                        sx={{
+                                            color: "white",
+                                        }}
+                                    >
+                                        Features
+                                    </TableCell>
                                     {plans.map((plan) => (
                                         <TableCell
                                             key={plan.name}
-                                            sx={{ textAlign: "center" }}
+                                            sx={{
+                                                textAlign: "center",
+                                                color: "white",
+                                            }}
                                         >
                                             {plan.name}
                                         </TableCell>
@@ -165,7 +178,7 @@ export default function PlanForm({
                         </Table>
                     </TableContainer>
                 </Box>
-            </Paper>
+            </Box>
         </>
     );
 }

@@ -24,7 +24,7 @@ function App() {
 
                     <Route path="/" element={<QuoteLayout />}>
                         <Route path="/quote" element={<Insurance />} />
-                        {/* <Route path="/Insurance" element={<Insurance />} /> */}
+                        <Route path="/Insurance" element={<Quote />} />
                         <Route path="/fire" element={<Fire />} />
                     </Route>
 
