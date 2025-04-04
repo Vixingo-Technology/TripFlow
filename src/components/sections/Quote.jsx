@@ -152,9 +152,11 @@ export default function Quote() {
                     mt: 2,
                 }}
             >
-                <Button variant="outlined" size="large">
-                    Back
-                </Button>
+                <NavLink to={-1}>
+                    <Button size="large" variant="outlined">
+                        Back
+                    </Button>
+                </NavLink>
                 <NavLink to={"/summary"}>
                     <Button variant="contained" size="large">
                         Generate Quote

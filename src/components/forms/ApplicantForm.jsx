@@ -53,6 +53,7 @@ const countryCodes = [
     { code: "+55", flag: "🇧🇷" }, // Brazil
     { code: "+27", flag: "🇿🇦" }, // South Africa
     { code: "+34", flag: "🇪🇸" }, // Spain
+    { code: "+880", flag: "🇧🇩" }, // Spain
 ];
 
 export default function ApplicantForm() {

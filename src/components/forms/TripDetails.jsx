@@ -175,12 +175,12 @@ export default function TripDetails() {
                         row
                     >
                         <FormControlLabel
-                            value="single trip"
+                            value="Single Trip"
                             control={<Radio />}
                             label="Single Trip"
                         />
                         <FormControlLabel
-                            value="annual multi trip"
+                            value="Annual Multi Trip"
                             control={<Radio />}
                             label="Annual Multi Trip"
                         />
@@ -291,6 +291,7 @@ export default function TripDetails() {
                                 <DatePicker
                                     sx={{ width: "100%" }}
                                     label="Departure Date"
+                                    format="LL"
                                     value={userData.departureDate}
                                     onChange={(newValue) =>
                                         dispatch(addDepartureDate(newValue))
@@ -306,6 +307,7 @@ export default function TripDetails() {
                             >
                                 <DatePicker
                                     sx={{ width: "100%" }}
+                                    format="LL"
                                     label="Return Date"
                                     value={userData.returnDate}
                                     onChange={(newValue) =>
