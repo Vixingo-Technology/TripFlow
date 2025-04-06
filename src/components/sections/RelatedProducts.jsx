@@ -1,7 +1,9 @@
 import DirectionsCarIcon from "@mui/icons-material/DirectionsCar";
+import LocalFireDepartmentOutlinedIcon from '@mui/icons-material/LocalFireDepartmentOutlined';
 import React from "react";
 import ProductCard from "../cards/ProductCard";
 import { Grid, Typography } from "@mui/material";
+import { Link } from "react-router";
 
 export default function RelatedProducts() {
     return (
@@ -20,6 +22,19 @@ export default function RelatedProducts() {
                         title={"AutoMobile Insurance"}
                         description={"By TripFlow Insurance"}
                     />
+                </Grid>
+                <Grid size={{ xs: 12, lg: 3 }}>
+                    <Link to="/fire" style={{ textDecoration: "none" }}>
+                        <ProductCard
+                            icon={
+                                <LocalFireDepartmentOutlinedIcon
+                                    sx={{ width: "100px", height: "100px" }}
+                                />
+                            }
+                            title={"Fire Hazard Insurance"}
+                            description={"By TripFlow Insurance"}
+                        />
+                    </Link>
                 </Grid>
             </Grid>
         </div>
