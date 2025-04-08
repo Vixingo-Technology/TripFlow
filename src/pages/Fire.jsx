@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import {
-  Box, Button, Card, CardContent, Collapse, FormControlLabel,
-  Radio, RadioGroup, TextField, Typography, Switch, Grid, Paper
-} from '@mui/material';
+import { useDropzone } from 'react-dropzone';
 import AddIcon from '@mui/icons-material/Add';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
-import { useDropzone } from 'react-dropzone';
+import house from '../assets/house.png'
+import cabin from '../assets/cabin.png'
+import building from '../assets/insurance.png'
+import contents from '../assets/shield.png'
+import buildingAndContents from '../assets/life-insurance.png'
 
 const equipmentList = [
   'Portable extinguisher',
@@ -45,124 +46,237 @@ const FireInsuranceQuote = () => {
   });
 
   return (
-    <Box sx={{ p: 4, maxWidth: 900, mx: 'auto' }}>
-      <Typography variant="h5" fontWeight="bold">Fire Insurance</Typography>
-      <Typography variant="body2">Protect your house with Etiqa</Typography>
+    <div className="p-6 max-w-5xl mx-auto">
+      <h1 className="text-xl font-bold">Fire Insurance</h1>
+      <p className="text-sm text-gray-700">Protect your house with Trip Insurance</p>
 
       {/* Construction Class */}
-      <Typography mt={3} fontWeight="bold">Construction Class</Typography>
-      <RadioGroup row value={construction} onChange={(e) => setConstruction(e.target.value)}>
-        <FormControlLabel value="full-brick" control={<Radio />} label="Full Brick" />
-        <FormControlLabel value="partial-brick" control={<Radio />} label="Partial Brick" />
-      </RadioGroup>
+      <h2 className="mt-6 font-bold text-gray-800">Construction Class</h2>
+      <div className="flex gap-4 mt-2">
+
+
+        <label
+          className={`w-32 transition-all duration-300 relative block cursor-pointer rounded-lg border p-4 text-center  hover:shadow-md 
+    ${construction === 'full-brick' ? 'ring-2 bg-gray-200' : 'border-gray-300'}`}
+        >
+          <input
+            type="radio"
+            value="full-brick"
+            checked={construction === 'full-brick'}
+            onChange={(e) => setConstruction(e.target.value)}
+            className="absolute inset-0 z-10 opacity-0 cursor-pointer"
+          />
+
+          <div className="flex flex-col items-center justify-center space-y-2">
+            <img src={house} alt="Full Brick" className="h-16 w-16" />
+            <span className="font-semibold text-gray-700">Full Brick</span>
+          </div>
+
+          <div
+            className={`absolute top-2 right-2 h-5 w-5 rounded-full border flex items-center justify-center bg-white 
+              ${construction === 'full-brick'
+                ? 'border-gray-400'
+                : 'text-white'
+              }`}
+          >
+            ✓
+          </div>
+        </label>
+        <label
+          className={`w-32 transition-all duration-300 relative block cursor-pointer rounded-lg border p-4 text-center hover:shadow-md 
+    ${construction === 'partial-brick' ? 'ring-2 bg-gray-200' : 'border-gray-300'}`}
+        >
+          <input
+            type="radio"
+            value="partial-brick"
+            checked={construction === 'partial-brick'}
+            onChange={(e) => setConstruction(e.target.value)}
+            className="absolute inset-0 z-10 opacity-0 cursor-pointer"
+          />
+
+          <div className="flex flex-col items-center justify-center space-y-2">
+            <img src={cabin} alt="partial-brick" className="h-16 w-16" />
+            <span className="font-semibold text-gray-700">Partial Brick</span>
+          </div>
+
+          <div
+            className={`absolute top-2 right-2 h-5 w-5 rounded-full border flex items-center justify-center bg-white ${construction === 'partial-brick'
+              ? 'border-gray-400'
+              : 'text-white'
+              }`}
+          >
+            ✓
+          </div>
+        </label>
+
+
+
+
+       
+      </div>
 
       {/* Protection Type */}
-      <Typography mt={3} fontWeight="bold">I would like to protect my</Typography>
-      <RadioGroup row value={protectionType} onChange={(e) => setProtectionType(e.target.value)}>
-        <FormControlLabel value="building" control={<Radio />} label="Building" />
-        <FormControlLabel value="contents" control={<Radio />} label="Contents" />
-        <FormControlLabel value="building-and-contents" control={<Radio />} label="Building and Contents" />
-      </RadioGroup>
+      {/* Protection Type */}
+<h2 className="mt-6 font-bold text-gray-800">I would like to protect my</h2>
+<div className="flex gap-4 mt-2">
+  {/* Building */}
+  <label
+    className={`w-40 transition-all duration-300 relative block cursor-pointer rounded-lg border p-4 text-center hover:shadow-md 
+      ${protectionType === 'building' ? 'ring-2 bg-gray-200' : 'border-gray-300'}`}
+  >
+    <input
+      type="radio"
+      value="building"
+      checked={protectionType === 'building'}
+      onChange={(e) => setProtectionType(e.target.value)}
+      className="absolute inset-0 z-10 opacity-0 cursor-pointer"
+    />
+    <div className="flex flex-col items-center justify-center space-y-2">
+      <img src={building} alt="" className='w-16 h-16'/>
+      <span className="font-semibold text-gray-700">Building</span>
+    </div>
+    <div
+      className={`absolute top-2 right-2 h-5 w-5 rounded-full border flex items-center justify-center bg-white 
+        ${protectionType === 'building' ? 'border-gray-400' : 'text-white'}`}
+    >
+      ✓
+    </div>
+  </label>
+
+  {/* Contents */}
+  <label
+    className={`w-40 transition-all duration-300 relative block cursor-pointer rounded-lg border p-4 text-center hover:shadow-md 
+      ${protectionType === 'contents' ? 'ring-2 bg-gray-200' : 'border-gray-300'}`}
+  >
+    <input
+      type="radio"
+      value="contents"
+      checked={protectionType === 'contents'}
+      onChange={(e) => setProtectionType(e.target.value)}
+      className="absolute inset-0 z-10 opacity-0 cursor-pointer"
+    />
+    <div className="flex flex-col items-center justify-center space-y-2">
+      <img src={contents} alt="" className='w-16 h-16' />
+      <span className="font-semibold text-gray-700">Contents</span>
+    </div>
+    <div
+      className={`absolute top-2 right-2 h-5 w-5 rounded-full border flex items-center justify-center bg-white 
+        ${protectionType === 'contents' ? 'border-gray-400' : 'text-white'}`}
+    >
+      ✓
+    </div>
+  </label>
+
+  {/* Building and Contents */}
+  <label
+    className={`w-40 transition-all duration-300 relative block cursor-pointer rounded-lg border p-4 text-center hover:shadow-md 
+      ${protectionType === 'building-and-contents' ? 'ring-2 bg-gray-200' : 'border-gray-300'}`}
+  >
+    <input
+      type="radio"
+      value="building-and-contents"
+      checked={protectionType === 'building-and-contents'}
+      onChange={(e) => setProtectionType(e.target.value)}
+      className="absolute inset-0 z-10 opacity-0 cursor-pointer"
+    />
+    <div className="flex flex-col items-center justify-center space-y-2">
+      <img src={buildingAndContents} alt="" className='w-16 h-16'/>
+      <span className="font-semibold text-gray-700 text-sm text-wrap leading-tight">Building & Contents</span>
+    </div>
+    <div
+      className={`absolute top-2 right-2 h-5 w-5 rounded-full border flex items-center justify-center bg-white 
+        ${protectionType === 'building-and-contents' ? 'border-gray-400' : 'text-white'}`}
+    >
+      ✓
+    </div>
+  </label>
+</div>
+
 
       {/* Coverage */}
-      <Card variant="outlined" sx={{ mt: 3, backgroundColor: '#FFF8E1' }}>
-        <CardContent>
-          <Typography fontWeight="bold">Coverage Amount</Typography>
-          <Typography variant="caption">Note: Figure will be rounded based on the last 3 digits</Typography>
-          <TextField
-            fullWidth
-            label="How much is your Building worth?"
-            type="number"
-            margin="dense"
-            value={buildingWorth}
-            onChange={(e) => setBuildingWorth(e.target.value)}
-          />
-          <TextField
-            fullWidth
-            label="How much is your Content worth?"
-            type="number"
-            margin="dense"
-            value={contentWorth}
-            onChange={(e) => setContentWorth(e.target.value)}
-          />
-          <Box mt={2} p={2} bgcolor="#E0F7FA" display="flex" justifyContent="space-between">
-            <Typography fontWeight="bold">Total sum covered amount</Typography>
-            <Typography fontWeight="bold">${total.toFixed(2)}</Typography>
-          </Box>
-        </CardContent>
-      </Card>
+      <div className="mt-6 border rounded bg-yellow-50 p-4">
+        <h3 className="font-bold text-gray-800">Coverage Amount</h3>
+        <p className="text-xs text-gray-600">Note: Figure will be rounded based on the last 3 digits</p>
+        <input
+          type="number"
+          value={buildingWorth}
+          onChange={(e) => setBuildingWorth(e.target.value)}
+          placeholder="How much is your Building worth?"
+          className="w-full border p-2 mt-2 rounded"
+        />
+        <input
+          type="number"
+          value={contentWorth}
+          onChange={(e) => setContentWorth(e.target.value)}
+          placeholder="How much is your Content worth?"
+          className="w-full border p-2 mt-2 rounded"
+        />
+        <div className="flex justify-between items-center bg-cyan-100 p-3 mt-4 rounded">
+          <span className="font-bold text-gray-800">Total sum covered amount</span>
+          <span className="font-bold text-gray-800">${total.toFixed(2)}</span>
+        </div>
+      </div>
 
       {/* Extras */}
-      <Box mt={3}>
-        <Typography fontWeight="bold">Extras (%)</Typography>
-        <Typography variant="body2">Supercharge your purchase with additional discount and coverages</Typography>
-        <Button endIcon={<AddIcon />} onClick={() => setExtrasOpen(!extrasOpen)} sx={{ mt: 1 }}>
-          Firefighting Discount
-        </Button>
+      <div className="mt-6">
+        <h3 className="font-bold text-gray-800">Extras (%)</h3>
+        <p className="text-sm text-gray-700">Supercharge your purchase with additional discount and coverages</p>
+        <button
+          onClick={() => setExtrasOpen(!extrasOpen)}
+          className="mt-2 flex items-center gap-1 text-yellow-600"
+        >
+          <AddIcon className="text-yellow-600" /> Firefighting Discount
+        </button>
 
-        <Collapse in={extrasOpen}>
-          <Card variant="outlined" sx={{ mt: 2 }}>
-            <CardContent>
-              <Typography fontWeight="bold" mb={2}>Do you have the following equipment?</Typography>
-
-              <Grid container spacing={2}>
-                {equipmentList.map((label, idx) => (
-                  <Grid item xs={12} sm={6} key={idx} display="flex" justifyContent="space-between" alignItems="center">
-                    <Typography>{label}?</Typography>
-                    <Switch
+        {extrasOpen && (
+          <div className="border mt-4 p-4 rounded">
+            <h4 className="font-bold text-gray-800 mb-2">Do you have the following equipment?</h4>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {equipmentList.map((label, idx) => (
+                <div key={idx} className="flex justify-between items-center">
+                  <span className="text-gray-800">{label}?</span>
+                  <label className="inline-flex items-center cursor-pointer">
+                    <input
+                      type="checkbox"
+                      className="sr-only"
                       checked={equipment[label] || false}
                       onChange={() => handleToggle(label)}
-                      color="warning"
                     />
-                  </Grid>
-                ))}
-              </Grid>
+                    <div className={`w-11 h-6 bg-gray-300 rounded-full relative transition-colors duration-200 ${equipment[label] ? 'bg-yellow-400' : ''}`}>
+                      <div className={`dot absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition ${equipment[label] ? 'translate-x-5' : ''}`}></div>
+                    </div>
+                  </label>
+                </div>
+              ))}
+            </div>
 
-              {/* Dropzone */}
-              <Box
-                {...getRootProps()}
-                sx={{
-                  mt: 3,
-                  border: '2px dashed #ccc',
-                  borderRadius: 2,
-                  p: 3,
-                  textAlign: 'center',
-                  cursor: 'pointer',
-                  color: isDragActive ? '#000' : '#888',
-                }}
-              >
-                <input {...getInputProps()} />
-                <CloudUploadIcon fontSize="large" />
-                <Typography>
-                  Drag and drop an image here or click, maximum 5 images are allowed.
-                </Typography>
-                {files.length > 0 && (
-                  <Typography mt={1} color="green">{files.length} image(s) uploaded</Typography>
-                )}
-              </Box>
-            </CardContent>
-          </Card>
-        </Collapse>
-      </Box>
+            {/* Dropzone */}
+            <div
+              {...getRootProps()}
+              className={`mt-6 border-2 border-dashed p-6 rounded text-center cursor-pointer ${isDragActive ? 'text-black' : 'text-gray-500'}`}
+            >
+              <input {...getInputProps()} />
+              <CloudUploadIcon className="mx-auto text-gray-600" fontSize="large" />
+              <p>Drag and drop an image here or click, maximum 5 images allowed.</p>
+              {files.length > 0 && (
+                <p className="mt-2 text-gray-800">{files.length} image(s) uploaded</p>
+              )}
+            </div>
+          </div>
+        )}
+      </div>
 
       {/* Get Quote Button */}
-      <Button
-        fullWidth
-        sx={{
-          mt: 4,
-          backgroundColor: '#FFC107',
-          color: 'black',
-          '&:hover': { backgroundColor: '#FFB300' }
-        }}
-        variant="contained"
+      <button
+        className="w-full mt-6 bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-2 rounded"
       >
         GET QUOTE
-      </Button>
+      </button>
 
-      <Typography variant="caption" textAlign="center" display="block" mt={4}>
+      <p className="text-xs text-center text-gray-600 mt-6">
         Underwritten by Etiqa General Insurance (Cambodia) Plc. v2.1.2
-      </Typography>
-    </Box>
+      </p>
+    </div>
   );
 };
 
