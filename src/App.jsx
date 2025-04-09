@@ -14,7 +14,9 @@ import Fire from "./pages/Fire";
 import Insurance from "./pages/Insurance";
 import Summary from "./pages/Summary";
 import ThankYou from "./pages/ThankYou";
-
+import DashLayout from "./layouts/DashLayout";
+import Dashboard from "./pages/Dashboard";
+import Login from "./pages/Login";
 function App() {
     return (
         <>
@@ -28,11 +30,14 @@ function App() {
                         <Route path="/quote" element={<Insurance />} />
                         <Route path="/summary" element={<Summary />} />
                         <Route path="/Insurance" element={<Quote />} />
-
                         <Route path="/fire" element={<Fire />} />
                         <Route path="/thankyou" element={<ThankYou />} />
                     </Route>
+                    <Route path="/login" element={<Login />} />
 
+                    <Route path="dashboard" element={<DashLayout />}>
+                        <Route index element={<Dashboard />} />
+                    </Route>
                     <Route path="*" element={<Error />} />
                 </Routes>
             </BrowserRouter>

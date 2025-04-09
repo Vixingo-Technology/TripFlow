@@ -16,6 +16,7 @@
     "@mui/material": "^7.0.0",
     "@mui/x-date-pickers": "^7.28.2",
     "@reduxjs/toolkit": "^2.6.1",
+    "@toolpad/core": "^0.13.0",
     "dayjs": "^1.11.13",
     "motion": "^12.6.2",
     "react": "^19.0.0",
