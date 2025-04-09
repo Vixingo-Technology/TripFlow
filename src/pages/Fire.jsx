@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import {
   Box, Typography, Grid, RadioGroup, FormControlLabel, Radio, TextField,
@@ -347,6 +348,7 @@ const Fire = () => {
       </Grid>
     </Box>
   );
+
 };
 
 export default Fire;

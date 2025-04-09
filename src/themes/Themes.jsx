@@ -27,7 +27,10 @@ export const ThemeProvider = ({ children }) => {
                               main: "#EB0045",
                           },
                           secondary: { main: "#00263A" },
-                          background: { default: "#ffffff", paper: "#ededed" },
+                          background: {
+                              default: "#ffffff",
+                              paper: "#FFF5EE",
+                          },
                           text: { primary: "#00263A" },
                       }),
             },

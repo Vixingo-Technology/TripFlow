@@ -167,9 +167,11 @@ function Header(props) {
                         <Button color="text" startIcon={<LocalHospital />}>
                             Hospital Portal
                         </Button>
-                        <Button color="text" startIcon={<Login />}>
-                            Login
-                        </Button>
+                        <NavLink to={"/login"}>
+                            <Button color="text" startIcon={<Login />}>
+                                Login
+                            </Button>
+                        </NavLink>
                     </Box>
                     <Toolbar
                         sx={{
