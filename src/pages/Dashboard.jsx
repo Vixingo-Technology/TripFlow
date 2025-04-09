@@ -1,5 +1,6 @@
 import { Box, Button, Grid, Stack, Typography } from "@mui/material";
 import React from "react";
+import Premium from "../components/charts/Premium";
 // import Dataset from "../components/charts/Dataset";
 // import TaskChart from "../components/charts/TaskChart";
 // import TrendChart from "../components/charts/TrendChart";
@@ -33,7 +34,7 @@ export default function Dashboard() {
             >
                 <Grid item size={{ xs: 1, md: 4 }}>
                     <Typography variant="h6">Dataset Process</Typography>
-                    {/* <Dataset /> */}
+                    <Premium />
                 </Grid>
                 <Grid item size={{ xs: 1, md: 4 }}>
                     {" "}

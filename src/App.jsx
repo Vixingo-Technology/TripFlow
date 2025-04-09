@@ -17,6 +17,7 @@ import ThankYou from "./pages/ThankYou";
 import DashLayout from "./layouts/DashLayout";
 import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
+import { Paper } from "@mui/material";
 function App() {
     return (
         <>
@@ -37,6 +38,21 @@ function App() {
 
                     <Route path="dashboard" element={<DashLayout />}>
                         <Route index element={<Dashboard />} />
+                        <Route
+                            path="analytics"
+                            element={<Paper>Analytics</Paper>}
+                        />
+                        <Route path="models" element={<Paper>Models</Paper>} />
+                        <Route
+                            path="documents"
+                            element={<Paper>Documents</Paper>}
+                        />
+                        <Route
+                            path="terminal"
+                            element={<Paper>Terminal</Paper>}
+                        />
+                        <Route path="chat" element={<Paper>Chat</Paper>} />
+                        <Route path="plans" element={<Paper>Plans</Paper>} />
                     </Route>
                     <Route path="*" element={<Error />} />
                 </Routes>
