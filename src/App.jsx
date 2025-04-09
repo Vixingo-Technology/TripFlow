@@ -1,6 +1,3 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
 import Home from "./pages/Home";
 import Quote from "./pages/Quote";
@@ -14,10 +11,15 @@ import Fire from "./pages/Fire";
 import Insurance from "./pages/Insurance";
 import Summary from "./pages/Summary";
 import ThankYou from "./pages/ThankYou";
+
+import CustomerDetailsForm from "./pages/CustomerDetailsForm";
+
+
 import DashLayout from "./layouts/DashLayout";
 import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
 import { Paper } from "@mui/material";
+
 function App() {
     return (
         <>
@@ -32,6 +34,7 @@ function App() {
                         <Route path="/summary" element={<Summary />} />
                         <Route path="/Insurance" element={<Quote />} />
                         <Route path="/fire" element={<Fire />} />
+                        <Route path="/customerDetailsForm" element={<CustomerDetailsForm />} />
                         <Route path="/thankyou" element={<ThankYou />} />
                     </Route>
                     <Route path="/login" element={<Login />} />
