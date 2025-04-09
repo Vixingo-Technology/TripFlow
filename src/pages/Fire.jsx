@@ -1,12 +1,24 @@
 import React, { useState } from 'react';
-import { useDropzone } from 'react-dropzone';
+import {
+  Box, Typography, Grid, RadioGroup, FormControlLabel, Radio, TextField,
+  Paper, Button, Collapse, Switch, Avatar
+} from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
-import house from '../assets/house.png'
-import cabin from '../assets/cabin.png'
-import building from '../assets/insurance.png'
-import contents from '../assets/shield.png'
-import buildingAndContents from '../assets/life-insurance.png'
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import { useDropzone } from 'react-dropzone';
+
+import house from '../assets/house.png';
+import cabin from '../assets/cabin.png';
+import building from '../assets/insurance.png';
+import contents from '../assets/shield.png';
+import buildingAndContents from '../assets/life-insurance.png';
+import halfBrick from '../assets/house2.png';
+import fire from '../assets/fire.png'; // Make sure this import is correct
+
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router';
+import { saveFireInsuranceData } from '../utils/slice/FireInsuranceSlice';
 
 const equipmentList = [
   'Portable extinguisher',
@@ -16,7 +28,28 @@ const equipmentList = [
   'Own fire truck',
 ];
 
-const FireInsuranceQuote = () => {
+const Fire = () => {
+
+
+
+// inside component:
+const dispatch = useDispatch();
+const navigate = useNavigate();
+
+const handleSubmit = () => {
+  dispatch(saveFireInsuranceData({
+    construction,
+    protectionType,
+    buildingWorth,
+    contentWorth,
+    equipment,
+    files,
+  }));
+  navigate('/customerDetailsForm'); // replace with your next page route
+};
+
+
+
   const [construction, setConstruction] = useState('');
   const [protectionType, setProtectionType] = useState('building-and-contents');
   const [buildingWorth, setBuildingWorth] = useState(0);
@@ -46,238 +79,256 @@ const FireInsuranceQuote = () => {
   });
 
   return (
-    <div className="p-6 max-w-5xl mx-auto">
-      <h1 className="text-xl font-bold">Fire Insurance</h1>
-      <p className="text-sm text-gray-700">Protect your house with Trip Insurance</p>
+    <Box p={4}>
+      <Grid container spacing={4}>
+        {/* LEFT COLUMN */}
+        <Grid size={{xs:12,md:6}} >
+          <Typography variant="h4" fontWeight="bold">Fire Insurance</Typography>
+          <Typography variant="body1" gutterBottom>
+            Protect your house with TripFlow
+          </Typography>
 
-      {/* Construction Class */}
-      <h2 className="mt-6 font-bold text-gray-800">Construction Class</h2>
-      <div className="flex gap-4 mt-2">
+          <Box sx={{ maxWidth: '600px' }}>
+            <img src={fire} alt="Fire Protection" width="100%" />
+          </Box>
 
+          <Box sx={{ mt: 3 }}>
+            <Box display="flex" alignItems="center" mb={2}>
+              <CheckCircleIcon color="warning" sx={{ mr: 1 }} />
+              <Typography>
+                Fire, Lightning, and explosion caused by gas used for domestic purposes
+              </Typography>
+            </Box>
+            <Box display="flex" alignItems="center">
+              <CheckCircleIcon color="warning" sx={{ mr: 1 }} />
+              <Typography>
+                Bursting or overflowing of domestic water tanks apparatus or pipes
+              </Typography>
+            </Box>
+          </Box>
 
-        <label
-          className={`w-32 transition-all duration-300 relative block cursor-pointer rounded-lg border p-4 text-center  hover:shadow-md 
-    ${construction === 'full-brick' ? 'ring-2 bg-gray-200' : 'border-gray-300'}`}
-        >
-          <input
-            type="radio"
-            value="full-brick"
-            checked={construction === 'full-brick'}
-            onChange={(e) => setConstruction(e.target.value)}
-            className="absolute inset-0 z-10 opacity-0 cursor-pointer"
-          />
+          <Typography variant="body2" sx={{ mt: 3 }}>
+            You can learn more about this product by reading{' '}
+            <a href="#policy" style={{ color: '#0077cc' }}>
+              Policy Wording and Clauses
+            </a>
+          </Typography>
+        </Grid>
 
-          <div className="flex flex-col items-center justify-center space-y-2">
-            <img src={house} alt="Full Brick" className="h-16 w-16" />
-            <span className="font-semibold text-gray-700">Full Brick</span>
-          </div>
+        {/* RIGHT COLUMN - FIRE INSURANCE FORM */}
+        <Grid  size={{xs:12,md:6}}>
+          <Typography variant="h5" fontWeight="bold" gutterBottom>Fire Insurance</Typography>
+          <Typography variant="body2" color="text.secondary">Protect your house with Trip Insurance</Typography>
 
-          <div
-            className={`absolute top-2 right-2 h-5 w-5 rounded-full border flex items-center justify-center bg-white 
-              ${construction === 'full-brick'
-                ? 'border-gray-400'
-                : 'text-white'
-              }`}
-          >
-            ✓
-          </div>
-        </label>
-        <label
-          className={`w-32 transition-all duration-300 relative block cursor-pointer rounded-lg border p-4 text-center hover:shadow-md 
-    ${construction === 'partial-brick' ? 'ring-2 bg-gray-200' : 'border-gray-300'}`}
-        >
-          <input
-            type="radio"
-            value="partial-brick"
-            checked={construction === 'partial-brick'}
-            onChange={(e) => setConstruction(e.target.value)}
-            className="absolute inset-0 z-10 opacity-0 cursor-pointer"
-          />
+          {/* Construction Class */}
+          <Typography mt={4} fontWeight="bold">Construction Class</Typography>
+          <Grid container spacing={2} mt={1}>
+            {[{ label: 'Full Brick', value: 'full-brick', img: house },
+              { label: 'Partial Brick', value: 'partial-brick', img: cabin },
+              { label: 'Half Brick', value: 'half-brick', img: halfBrick }].map(({ label, value, img }) => (
+              <Grid item xs={6} sm={6} key={value}>
+                <Paper
+                  variant="outlined"
+                  sx={{
+                    cursor: 'pointer',
+                    borderColor: construction === value ? 'primary.main' : 'grey.300',
+                    bgcolor: construction === value ? 'grey.100' : 'inherit',
+                    textAlign: 'center',
+                    p: 2,
+                    position: 'relative',
+                    width: '130px'
+                  }}
+                  onClick={() => setConstruction(value)}
+                >
+                  <img src={img} alt={label} style={{ width: 56, height: 56, margin: '0 auto' }} />
+                  <Typography fontWeight="medium">{label}</Typography>
+                  {construction === value && (
+                    <Box
+                      sx={{
+                        position: 'absolute',
+                        top: 8,
+                        right: 8,
+                        bgcolor: 'white',
+                        borderRadius: '50%',
+                        border: 1,
+                        borderColor: 'grey.400',
+                        width: 20,
+                        height: 20,
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        fontSize: 12,
+                      }}
+                    >
+                      ✓
+                    </Box>
+                  )}
+                </Paper>
+              </Grid>
+            ))}
+          </Grid>
 
-          <div className="flex flex-col items-center justify-center space-y-2">
-            <img src={cabin} alt="partial-brick" className="h-16 w-16" />
-            <span className="font-semibold text-gray-700">Partial Brick</span>
-          </div>
+          {/* Protection Type */}
+          <Typography mt={4} fontWeight="bold">I would like to protect my</Typography>
+          <Grid container spacing={2} mt={1}>
+            {[{
+              label: 'Building', value: 'building', img: building,
+            }, {
+              label: 'Contents', value: 'contents', img: contents,
+            }, {
+              label: 'Building & Contents', value: 'building-and-contents', img: buildingAndContents,
+            }].map(({ label, value, img }) => (
+              <Grid item xs={12} sm={4} key={value}>
+                <Paper
+                  variant="outlined"
+                  sx={{
+                    cursor: 'pointer',
+                    borderColor: protectionType === value ? 'primary.main' : 'grey.300',
+                    bgcolor: protectionType === value ? 'grey.100' : 'inherit',
+                    textAlign: 'center',
+                    p: 2,
+                    position: 'relative',
+                    width: '170px'
+                  }}
+                  onClick={() => setProtectionType(value)}
+                >
+                  <img src={img} alt={label} style={{ width: 56, height: 56, margin: 'auto' }} />
+                  <Typography fontWeight="medium" fontSize={14}>{label}</Typography>
+                  {protectionType === value && (
+                    <Box
+                      sx={{
+                        position: 'absolute',
+                        top: 8,
+                        right: 8,
+                        bgcolor: 'white',
+                        borderRadius: '50%',
+                        border: 1,
+                        borderColor: 'grey.400',
+                        width: 20,
+                        height: 20,
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        fontSize: 12,
+                      }}
+                    >
+                      ✓
+                    </Box>
+                  )}
+                </Paper>
+              </Grid>
+            ))}
+          </Grid>
 
-          <div
-            className={`absolute top-2 right-2 h-5 w-5 rounded-full border flex items-center justify-center bg-white ${construction === 'partial-brick'
-              ? 'border-gray-400'
-              : 'text-white'
-              }`}
-          >
-            ✓
-          </div>
-        </label>
-
-
-
-
-       
-      </div>
-
-      {/* Protection Type */}
-      {/* Protection Type */}
-<h2 className="mt-6 font-bold text-gray-800">I would like to protect my</h2>
-<div className="flex gap-4 mt-2">
-  {/* Building */}
-  <label
-    className={`w-40 transition-all duration-300 relative block cursor-pointer rounded-lg border p-4 text-center hover:shadow-md 
-      ${protectionType === 'building' ? 'ring-2 bg-gray-200' : 'border-gray-300'}`}
-  >
-    <input
-      type="radio"
-      value="building"
-      checked={protectionType === 'building'}
-      onChange={(e) => setProtectionType(e.target.value)}
-      className="absolute inset-0 z-10 opacity-0 cursor-pointer"
-    />
-    <div className="flex flex-col items-center justify-center space-y-2">
-      <img src={building} alt="" className='w-16 h-16'/>
-      <span className="font-semibold text-gray-700">Building</span>
-    </div>
-    <div
-      className={`absolute top-2 right-2 h-5 w-5 rounded-full border flex items-center justify-center bg-white 
-        ${protectionType === 'building' ? 'border-gray-400' : 'text-white'}`}
-    >
-      ✓
-    </div>
-  </label>
-
-  {/* Contents */}
-  <label
-    className={`w-40 transition-all duration-300 relative block cursor-pointer rounded-lg border p-4 text-center hover:shadow-md 
-      ${protectionType === 'contents' ? 'ring-2 bg-gray-200' : 'border-gray-300'}`}
-  >
-    <input
-      type="radio"
-      value="contents"
-      checked={protectionType === 'contents'}
-      onChange={(e) => setProtectionType(e.target.value)}
-      className="absolute inset-0 z-10 opacity-0 cursor-pointer"
-    />
-    <div className="flex flex-col items-center justify-center space-y-2">
-      <img src={contents} alt="" className='w-16 h-16' />
-      <span className="font-semibold text-gray-700">Contents</span>
-    </div>
-    <div
-      className={`absolute top-2 right-2 h-5 w-5 rounded-full border flex items-center justify-center bg-white 
-        ${protectionType === 'contents' ? 'border-gray-400' : 'text-white'}`}
-    >
-      ✓
-    </div>
-  </label>
-
-  {/* Building and Contents */}
-  <label
-    className={`w-40 transition-all duration-300 relative block cursor-pointer rounded-lg border p-4 text-center hover:shadow-md 
-      ${protectionType === 'building-and-contents' ? 'ring-2 bg-gray-200' : 'border-gray-300'}`}
-  >
-    <input
-      type="radio"
-      value="building-and-contents"
-      checked={protectionType === 'building-and-contents'}
-      onChange={(e) => setProtectionType(e.target.value)}
-      className="absolute inset-0 z-10 opacity-0 cursor-pointer"
-    />
-    <div className="flex flex-col items-center justify-center space-y-2">
-      <img src={buildingAndContents} alt="" className='w-16 h-16'/>
-      <span className="font-semibold text-gray-700 text-sm text-wrap leading-tight">Building & Contents</span>
-    </div>
-    <div
-      className={`absolute top-2 right-2 h-5 w-5 rounded-full border flex items-center justify-center bg-white 
-        ${protectionType === 'building-and-contents' ? 'border-gray-400' : 'text-white'}`}
-    >
-      ✓
-    </div>
-  </label>
-</div>
-
-
-      {/* Coverage */}
-      <div className="mt-6 border rounded bg-yellow-50 p-4">
-        <h3 className="font-bold text-gray-800">Coverage Amount</h3>
-        <p className="text-xs text-gray-600">Note: Figure will be rounded based on the last 3 digits</p>
-        <input
-          type="number"
-          value={buildingWorth}
-          onChange={(e) => setBuildingWorth(e.target.value)}
-          placeholder="How much is your Building worth?"
-          className="w-full border p-2 mt-2 rounded"
-        />
-        <input
-          type="number"
-          value={contentWorth}
-          onChange={(e) => setContentWorth(e.target.value)}
-          placeholder="How much is your Content worth?"
-          className="w-full border p-2 mt-2 rounded"
-        />
-        <div className="flex justify-between items-center bg-cyan-100 p-3 mt-4 rounded">
-          <span className="font-bold text-gray-800">Total sum covered amount</span>
-          <span className="font-bold text-gray-800">${total.toFixed(2)}</span>
-        </div>
-      </div>
-
-      {/* Extras */}
-      <div className="mt-6">
-        <h3 className="font-bold text-gray-800">Extras (%)</h3>
-        <p className="text-sm text-gray-700">Supercharge your purchase with additional discount and coverages</p>
-        <button
-          onClick={() => setExtrasOpen(!extrasOpen)}
-          className="mt-2 flex items-center gap-1 text-yellow-600"
-        >
-          <AddIcon className="text-yellow-600" /> Firefighting Discount
-        </button>
-
-        {extrasOpen && (
-          <div className="border mt-4 p-4 rounded">
-            <h4 className="font-bold text-gray-800 mb-2">Do you have the following equipment?</h4>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {equipmentList.map((label, idx) => (
-                <div key={idx} className="flex justify-between items-center">
-                  <span className="text-gray-800">{label}?</span>
-                  <label className="inline-flex items-center cursor-pointer">
-                    <input
-                      type="checkbox"
-                      className="sr-only"
-                      checked={equipment[label] || false}
-                      onChange={() => handleToggle(label)}
-                    />
-                    <div className={`w-11 h-6 bg-gray-300 rounded-full relative transition-colors duration-200 ${equipment[label] ? 'bg-yellow-400' : ''}`}>
-                      <div className={`dot absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition ${equipment[label] ? 'translate-x-5' : ''}`}></div>
-                    </div>
-                  </label>
-                </div>
-              ))}
-            </div>
-
-            {/* Dropzone */}
-            <div
-              {...getRootProps()}
-              className={`mt-6 border-2 border-dashed p-6 rounded text-center cursor-pointer ${isDragActive ? 'text-black' : 'text-gray-500'}`}
+          {/* Coverage */}
+          <Paper sx={{ mt: 4, p: 3, bgcolor: 'yellow.50' }} elevation={0}>
+            <Typography fontWeight="bold">Coverage Amount</Typography>
+            <Typography variant="caption">Note: Figure will be rounded based on the last 3 digits</Typography>
+            <TextField
+              fullWidth
+              type="number"
+              label="Building worth"
+              variant="outlined"
+              size="small"
+              value={buildingWorth}
+              onChange={(e) => setBuildingWorth(e.target.value)}
+              sx={{ mt: 2 }}
+            />
+            <TextField
+              fullWidth
+              type="number"
+              label="Content worth"
+              variant="outlined"
+              size="small"
+              value={contentWorth}
+              onChange={(e) => setContentWorth(e.target.value)}
+              sx={{ mt: 2 }}
+            />
+            <Box
+              mt={2}
+              p={2}
+              bgcolor="cyan.100"
+              display="flex"
+              justifyContent="space-between"
+              borderRadius={1}
             >
-              <input {...getInputProps()} />
-              <CloudUploadIcon className="mx-auto text-gray-600" fontSize="large" />
-              <p>Drag and drop an image here or click, maximum 5 images allowed.</p>
-              {files.length > 0 && (
-                <p className="mt-2 text-gray-800">{files.length} image(s) uploaded</p>
-              )}
-            </div>
-          </div>
-        )}
-      </div>
+              <Typography fontWeight="bold">Total sum covered amount</Typography>
+              <Typography fontWeight="bold">${total.toFixed(2)}</Typography>
+            </Box>
+          </Paper>
 
-      {/* Get Quote Button */}
-      <button
-        className="w-full mt-6 bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-2 rounded"
-      >
-        GET QUOTE
-      </button>
+          {/* Extras */}
+          <Box mt={4}>
+            <Typography fontWeight="bold">Extras (%)</Typography>
+            <Typography variant="body2" color="text.secondary">
+              Supercharge your purchase with additional discount and coverages
+            </Typography>
+            <Button
+              startIcon={<AddIcon />}
+              onClick={() => setExtrasOpen(!extrasOpen)}
+              sx={{ mt: 1 }}
+            >
+              Firefighting Discount
+            </Button>
 
-      <p className="text-xs text-center text-gray-600 mt-6">
-        Underwritten by Etiqa General Insurance (Cambodia) Plc. v2.1.2
-      </p>
-    </div>
+            <Collapse in={extrasOpen}>
+              <Paper variant="outlined" sx={{ mt: 2, p: 3 }}>
+                <Typography fontWeight="bold" mb={2}>Do you have the following equipment?</Typography>
+                <Grid container spacing={2}>
+                  {equipmentList.map((label, idx) => (
+                    <Grid item xs={12} sm={6} key={idx}>
+                      <Box display="flex" justifyContent="space-between" alignItems="center">
+                        <Typography>{label}?</Typography>
+                        <Switch
+                          checked={equipment[label] || false}
+                          onChange={() => handleToggle(label)}
+                          color="warning"
+                        />
+                      </Box>
+                    </Grid>
+                  ))}
+                </Grid>
+
+                <Box
+                  {...getRootProps()}
+                  sx={{
+                    border: '2px dashed grey',
+                    borderRadius: 2,
+                    mt: 3,
+                    p: 4,
+                    textAlign: 'center',
+                    cursor: 'pointer',
+                    color: isDragActive ? 'black' : 'gray',
+                  }}
+                >
+                  <input {...getInputProps()} />
+                  <CloudUploadIcon fontSize="large" />
+                  <Typography>Drag and drop an image here or click, max 5 images allowed.</Typography>
+                  {files.length > 0 && (
+                    <Typography mt={1}>{files.length} image(s) uploaded</Typography>
+                  )}
+                </Box>
+              </Paper>
+            </Collapse>
+          </Box>
+
+          {/* Submit */}
+          <Button
+            fullWidth
+            variant="contained"
+            sx={{ mt: 4, bgcolor: 'yellow.400', color: 'black', fontWeight: 'bold' }}
+            onClick={handleSubmit}
+          >
+            GET QUOTE
+          </Button>
+
+          <Typography variant="caption" color="text.secondary" textAlign="center" display="block" mt={4}>
+            Underwritten by TripFlow Insurance
+          </Typography>
+        </Grid>
+      </Grid>
+    </Box>
   );
 };
 
-export default FireInsuranceQuote;
+export default Fire;
