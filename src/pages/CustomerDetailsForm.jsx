@@ -15,14 +15,68 @@ import {
   TextField,
   Typography,
   Checkbox,
+  styled,
 } from "@mui/material";
+import { DatePicker, LocalizationProvider, MobileDatePicker } from "@mui/x-date-pickers";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
+import dayjs from "dayjs";
+
+
+
+const StyledLocalizationProvider = styled(LocalizationProvider)`
+  .MuiYearCalendar-root {
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    margin: 0 !important;
+    max-height: 300px !important;
+    overflow-y: auto !important;
+  }
+  
+  .MuiPickersYear-root {
+    width: 100% !important;
+    margin: 0 !important;
+    flex: none !important;
+    display: flex !important;
+    justify-content: center !important;
+    padding: 8px 0 !important;
+  }
+  
+  .MuiPickersYear-yearButton {
+    width: 100% !important;
+    border-radius: 0 !important;
+    justify-content: center !important;
+  }
+  
+  /* Highlight the selected year like in your screenshot */
+  .MuiPickersYear-yearButton.Mui-selected {
+    color: #f59e0b !important;
+    font-weight: bold !important;
+    background-color: transparent !important;
+  }
+  
+  /* Custom styling for the header and buttons */
+  .MuiPickersToolbar-root {
+    background-color: #f59e0b !important;
+    color: rgba(0, 0, 0, 0.87) !important;
+    padding: 16px !important;
+  }
+  
+  .MuiDialogActions-root button {
+    color: #f59e0b !important;
+  }
+`;
+
+
+
 
 const CustomerDetailsForm = () => {
   return (
     <Box p={4}>
       <Grid container spacing={4}>
         {/* Left Column - Form */}
-        <Grid size={{xs:12,md:8}}>
+        <Grid size={{ xs: 12, md: 8 }}>
           {/* Customer Details */}
           <Card variant="outlined">
             <CardContent>
@@ -51,7 +105,30 @@ const CustomerDetailsForm = () => {
                   <TextField fullWidth label="Phone" placeholder="+855 e.g 8551233456" />
                 </Grid>
                 <Grid size={12}>
-                  <TextField fullWidth label="Date of Birth" type="date" InputLabelProps={{ shrink: true }} />
+
+                  <LocalizationProvider dateAdapter={AdapterDayjs}>
+                    <DemoContainer components={["DatePicker"]}>
+                      <MobileDatePicker
+                        label="Date of Birth*"
+                        openTo="year"
+                        views={['year', 'month', 'day']}
+                        defaultValue={dayjs('1990-01-01')}
+                        sx={{ width: '100%' }}
+                        slotProps={{
+                          layout: {
+                            sx: {
+                              '& .MuiYearCalendar-root': {
+                                gridTemplateColumns: '1fr !important',
+                                width: '100%',
+                                justifyContent: 'center',
+                              }
+                            }
+                          }
+                        }}
+                      />
+                    </DemoContainer>
+                  </LocalizationProvider>
+
                 </Grid>
                 <Grid size={12}>
                   <TextField fullWidth label="Occupation" />
@@ -128,7 +205,7 @@ const CustomerDetailsForm = () => {
         </Grid>
 
         {/* Right Column - Summary */}
-        <Grid size={{xs:12,md:4}}>
+        <Grid size={{ xs: 12, md: 4 }}>
           <Card variant="outlined">
             <CardContent>
               <Typography variant="h6">Summary</Typography>
