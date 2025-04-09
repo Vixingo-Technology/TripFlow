@@ -15,7 +15,6 @@ import {
   TextField,
   Typography,
   Checkbox,
-  styled,
 } from "@mui/material";
 import { DatePicker, LocalizationProvider, MobileDatePicker } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
@@ -23,53 +22,15 @@ import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
 import dayjs from "dayjs";
 
 
-
-const StyledLocalizationProvider = styled(LocalizationProvider)`
-  .MuiYearCalendar-root {
-    width: 100% !important;
-    display: flex !important;
-    flex-direction: column !important;
-    margin: 0 !important;
-    max-height: 300px !important;
-    overflow-y: auto !important;
-  }
-  
-  .MuiPickersYear-root {
-    width: 100% !important;
-    margin: 0 !important;
-    flex: none !important;
-    display: flex !important;
-    justify-content: center !important;
-    padding: 8px 0 !important;
-  }
-  
-  .MuiPickersYear-yearButton {
-    width: 100% !important;
-    border-radius: 0 !important;
-    justify-content: center !important;
-  }
-  
-  /* Highlight the selected year like in your screenshot */
-  .MuiPickersYear-yearButton.Mui-selected {
-    color: #f59e0b !important;
-    font-weight: bold !important;
-    background-color: transparent !important;
-  }
-  
-  /* Custom styling for the header and buttons */
-  .MuiPickersToolbar-root {
-    background-color: #f59e0b !important;
-    color: rgba(0, 0, 0, 0.87) !important;
-    padding: 16px !important;
-  }
-  
-  .MuiDialogActions-root button {
-    color: #f59e0b !important;
-  }
-`;
-
-
-
+const options = [
+  "CAMBODIAN",
+  "AMERICAN",
+  "ITALIAN",
+  "MEXICAN",
+  "JAPANESE",
+  "CHINESE",
+  // Add more options here
+];
 
 const CustomerDetailsForm = () => {
   return (
@@ -89,11 +50,15 @@ const CustomerDetailsForm = () => {
                   <TextField fullWidth label="Name" placeholder="e.g: James Wong" />
                 </Grid>
                 <Grid size={12}>
-                  <FormControl fullWidth>
-                    <Select defaultValue="CAMBODIAN" displayEmpty>
-                      <MenuItem value="CAMBODIAN">CAMBODIAN</MenuItem>
-                    </Select>
-                  </FormControl>
+                <FormControl fullWidth>
+      <Select defaultValue="CAMBODIAN" displayEmpty>
+        {options.map((option) => (
+          <MenuItem key={option} value={option}>
+            {option}
+          </MenuItem>
+        ))}
+      </Select>
+    </FormControl>
                 </Grid>
                 <Grid size={12}>
                   <TextField fullWidth label="ID/Passport Number" />
