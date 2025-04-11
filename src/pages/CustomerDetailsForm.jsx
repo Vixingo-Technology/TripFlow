@@ -1,6 +1,5 @@
-import React from "react";
-// mew mew branch
-// import { useSelector } from 'react-redux';
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import {
   Box,
   Button,
@@ -20,13 +19,13 @@ import {
   Divider,
 } from "@mui/material";
 import {
-  DatePicker,
   LocalizationProvider,
   MobileDatePicker,
 } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
 import dayjs from "dayjs";
+import { setCustomerDetails } from "../utils/slice/FireInsuranceSlice";
+import { useNavigate } from "react-router";
 
 const options = [
   "CAMBODIAN",
@@ -35,48 +34,80 @@ const options = [
   "MEXICAN",
   "JAPANESE",
   "CHINESE",
-  // Add more options here
 ];
 
 const CustomerDetailsForm = () => {
+  const dispatch = useDispatch();
+  const { buildingWorth, contentWorth } = useSelector((state) => state.fireInsurance);
 
-  // const {
-  //   construction,
-  //   buildingWorth,
-  //   contentWorth,
-  // } = useSelector((state) => state.fireInsurance);
+  const [formData, setFormData] = useState({
+    name: "",
+    nationality: "CAMBODIAN",
+    idNumber: "",
+    email: "",
+    phone: "",
+    dob: dayjs("1990-01-01"),
+    occupation: "",
+    gender: "male",
+    address: {
+      line1: "",
+      line2: "",
+      city: "",
+      commune: "",
+      country: "Cambodia",
+    },
+    sameAsMailing: true,
+  });
+
+  const handleChange = (field, value) => {
+    setFormData((prev) => ({
+      ...prev,
+      [field]: value,
+    }));
+  };
+
+  const handleAddressChange = (field, value) => {
+    setFormData((prev) => ({
+      ...prev,
+      address: {
+        ...prev.address,
+        [field]: value,
+      },
+    }));
+  };
+  const navigate = useNavigate();
+  const handleNext = () => {
+    dispatch(setCustomerDetails(formData));
+    // navigate to next step if needed
+    navigate("/firePayment");
+  };
 
   return (
     <Box p={4}>
       <Grid container spacing={4}>
-        {/* Left Column - Form */}
-        <Grid size={{ xs: 12, md: 8 }}>
-          {/* Customer Details */}
+        <Grid size={{xs:12,md:8}}>
           <Card variant="outlined">
             <CardContent>
               <Typography variant="h4" mb={2} gutterBottom>
                 Customer Details
               </Typography>
-
               <Grid container spacing={2}>
                 <Grid size={12}>
                   <TextField
                     fullWidth
                     label="Name"
-                    placeholder="e.g: James Wong"
+                    value={formData.name}
+                    onChange={(e) => handleChange("name", e.target.value)}
                   />
                 </Grid>
                 <Grid size={12}>
                   <FormControl fullWidth>
                     <Select
-                      defaultValue="CAMBODIAN"
-                      displayEmpty
+                      value={formData.nationality}
+                      onChange={(e) => handleChange("nationality", e.target.value)}
                     >
                       {options.map((option) => (
-                        <MenuItem
-                          key={option}
-                          value={option}
-                        >
+                        <MenuItem key={option} value={option}>
                           {option}
                         </MenuItem>
                       ))}
@@ -87,73 +118,56 @@ const CustomerDetailsForm = () => {
                   <TextField
                     fullWidth
                     label="ID/Passport Number"
+                    value={formData.idNumber}
+                    onChange={(e) => handleChange("idNumber", e.target.value)}
                   />
                 </Grid>
                 <Grid size={12}>
                   <TextField
                     fullWidth
                     label="Email"
-                    placeholder="e.g: jameswong@gmail.com"
+                    value={formData.email}
+                    onChange={(e) => handleChange("email", e.target.value)}
                   />
                 </Grid>
                 <Grid size={12}>
                   <TextField
                     fullWidth
                     label="Phone"
-                    placeholder="+855 e.g 8551233456"
+                    value={formData.phone}
+                    onChange={(e) => handleChange("phone", e.target.value)}
                   />
                 </Grid>
                 <Grid size={12}>
-                  <LocalizationProvider
-                    dateAdapter={AdapterDayjs}
-                  >
-                    <DemoContainer
-                      components={["DatePicker"]}
-                    >
-                      <MobileDatePicker
-                        label="Date of Birth*"
-                        openTo="year"
-                        views={["year", "month", "day"]}
-                        defaultValue={dayjs(
-                          "1990-01-01"
-                        )}
-                        sx={{ width: "100%" }}
-                        slotProps={{
-                          layout: {
-                            sx: {
-                              "& .MuiYearCalendar-root":
-                              {
-                                gridTemplateColumns:
-                                  "1fr !important",
-                                width: "100%",
-                                justifyContent:
-                                  "center",
-                              },
-                            },
-                          },
-                        }}
-                      />
-                    </DemoContainer>
+                  <LocalizationProvider dateAdapter={AdapterDayjs}>
+                    <MobileDatePicker
+                      label="Date of Birth"
+                      value={formData.dob}
+                      openTo="year"
+                      views={["year", "month", "day"]}
+                      onChange={(date) => handleChange("dob", date)}
+                      sx={{ width: "100%" }}
+                    />
                   </LocalizationProvider>
                 </Grid>
                 <Grid size={12}>
-                  <TextField fullWidth label="Occupation" />
+                  <TextField
+                    fullWidth
+                    label="Occupation"
+                    value={formData.occupation}
+                    onChange={(e) => handleChange("occupation", e.target.value)}
+                  />
                 </Grid>
-
                 <Grid size={12}>
                   <FormControl>
                     <FormLabel>Gender</FormLabel>
-                    <RadioGroup row>
-                      <FormControlLabel
-                        value="female"
-                        control={<Radio />}
-                        label="Female"
-                      />
-                      <FormControlLabel
-                        value="male"
-                        control={<Radio />}
-                        label="Male"
-                      />
+                    <RadioGroup
+                      row
+                      value={formData.gender}
+                      onChange={(e) => handleChange("gender", e.target.value)}
+                    >
+                      <FormControlLabel value="female" control={<Radio />} label="Female" />
+                      <FormControlLabel value="male" control={<Radio />} label="Male" />
                     </RadioGroup>
                   </FormControl>
                 </Grid>
@@ -161,20 +175,12 @@ const CustomerDetailsForm = () => {
             </CardContent>
           </Card>
 
-          {/* Upload ID Section */}
           <Box mt={4}>
-            <Typography
-              color="text.primary"
-              fontWeight="bold"
-              fontSize={14}
-            // variant="h4"
-            >
-              Upload Your ID (National ID/Passport/Birth
-              Certificate)
+            <Typography fontWeight="bold" fontSize={14}>
+              Upload Your ID (National ID/Passport/Birth Certificate)
             </Typography>
             <Typography variant="caption" color="text.secondary">
-              * only image (jpeg, png, webp, tif) and PDF file is
-              accepted for document upload
+              * only image (jpeg, png, webp, tif) and PDF file is accepted for document upload
             </Typography>
             <Box mt={1}>
               <Button variant="contained" component="label">
@@ -184,7 +190,6 @@ const CustomerDetailsForm = () => {
             </Box>
           </Box>
 
-          {/* Property Details */}
           <Box mt={4}>
             <Card variant="outlined">
               <CardContent>
@@ -196,40 +201,49 @@ const CustomerDetailsForm = () => {
                     <TextField
                       fullWidth
                       label="Line 1"
-                      placeholder="House number / Street Name"
+                      value={formData.address.line1}
+                      onChange={(e) => handleAddressChange("line1", e.target.value)}
                     />
                   </Grid>
                   <Grid size={12}>
                     <TextField
                       fullWidth
                       label="Line 2"
-                      placeholder="District"
+                      value={formData.address.line2}
+                      onChange={(e) => handleAddressChange("line2", e.target.value)}
                     />
                   </Grid>
                   <Grid size={12}>
                     <TextField
                       fullWidth
                       label="City/Province"
+                      value={formData.address.city}
+                      onChange={(e) => handleAddressChange("city", e.target.value)}
                     />
                   </Grid>
                   <Grid size={12}>
                     <TextField
                       fullWidth
                       label="Sangkat / Commune"
+                      value={formData.address.commune}
+                      onChange={(e) => handleAddressChange("commune", e.target.value)}
                     />
                   </Grid>
                   <Grid size={12}>
                     <TextField
                       fullWidth
                       label="Country"
-                      defaultValue="Cambodia"
+                      value="Cambodia"
                       disabled
                     />
                   </Grid>
                   <Grid size={12}>
                     <FormControlLabel
                       control={
-                        <Checkbox defaultChecked />
+                        <Checkbox
+                          checked={formData.sameAsMailing}
+                          onChange={(e) => handleChange("sameAsMailing", e.target.checked)}
+                        />
                       }
                       label="Is Risk Location same with your Mailing Address?"
                     />
@@ -239,14 +253,14 @@ const CustomerDetailsForm = () => {
             </Card>
           </Box>
 
-          {/* Navigation */}
           <Box mt={3} display="flex" justifyContent="space-between">
             <Button variant="outlined">Back</Button>
-            <Button variant="contained">Next</Button>
+            <Button variant="contained" 
+            
+            onClick={handleNext}>Next</Button>
           </Box>
         </Grid>
 
-        {/* Right Column - Summary */}
         <Grid size={{ xs: 12, md: 4 }} >
           <Card variant="outlined" sx={{ bgcolor: "#fff6f1" }}> {/* Matching soft peachy background */}
             <CardContent sx={{ px: 3, py: 2 }}> {/* Padding adjusted */}
@@ -301,7 +315,9 @@ const CustomerDetailsForm = () => {
                     </Typography>
                   </Grid>
                   <Grid item>
-                    <Typography variant="caption">$231.00</Typography>
+                    <Typography variant="caption">
+                      ${buildingWorth}
+                    </Typography>
                   </Grid>
                 </Grid>
                 <Divider></Divider>
@@ -313,7 +329,7 @@ const CustomerDetailsForm = () => {
                     </Typography>
                   </Grid>
                   <Grid item>
-                    <Typography variant="caption">$231.00</Typography>
+                    <Typography variant="caption">${contentWorth}</Typography>
                   </Grid>
                 </Grid>
                 <Divider></Divider>
@@ -372,7 +388,6 @@ const CustomerDetailsForm = () => {
             </CardContent>
           </Card>
         </Grid>
-
       </Grid>
     </Box>
   );

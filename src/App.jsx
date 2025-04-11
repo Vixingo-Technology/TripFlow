@@ -22,6 +22,7 @@ import Accident from "./pages/Accident";
 import ProductLayout from "./layouts/ProductLayout";
 import PaOnline from "./pages/PaOnline";
 import ScrollToTop from "./components/dynamic/ScrollToTop";
+import FirePayment from "./pages/FirePayment";
 
 function App() {
     return (
@@ -43,6 +44,7 @@ function App() {
                             path="/customerDetailsForm"
                             element={<CustomerDetailsForm />}
                         />
+                        <Route path="/firePayment" element={<FirePayment></FirePayment>}/>
                         <Route path="/thankyou" element={<ThankYou />} />
                     </Route>
                     <Route path="/" element={<ProductLayout />}>
