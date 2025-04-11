@@ -1,10 +1,10 @@
 import DirectionsCarIcon from "@mui/icons-material/DirectionsCar";
-import LocalFireDepartmentOutlinedIcon from '@mui/icons-material/LocalFireDepartmentOutlined';
+import LocalFireDepartmentOutlinedIcon from "@mui/icons-material/LocalFireDepartmentOutlined";
 import React from "react";
 import ProductCard from "../cards/ProductCard";
 import { Grid, Typography } from "@mui/material";
 import { Link } from "react-router";
-
+import PersonalInjuryOutlinedIcon from "@mui/icons-material/PersonalInjuryOutlined";
 export default function RelatedProducts() {
     return (
         <div style={{ maxWidth: "1820px", margin: "20px auto" }}>
@@ -32,6 +32,19 @@ export default function RelatedProducts() {
                                 />
                             }
                             title={"Fire Hazard Insurance"}
+                            description={"By TripFlow Insurance"}
+                        />
+                    </Link>
+                </Grid>
+                <Grid size={{ xs: 12, lg: 3 }}>
+                    <Link to="/accident" style={{ textDecoration: "none" }}>
+                        <ProductCard
+                            icon={
+                                <PersonalInjuryOutlinedIcon
+                                    sx={{ width: "100px", height: "100px" }}
+                                />
+                            }
+                            title={"Personal Accident "}
                             description={"By TripFlow Insurance"}
                         />
                     </Link>

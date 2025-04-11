@@ -14,11 +14,11 @@ import ThankYou from "./pages/ThankYou";
 
 import CustomerDetailsForm from "./pages/CustomerDetailsForm";
 
-
 import DashLayout from "./layouts/DashLayout";
 import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
 import { Paper } from "@mui/material";
+import Accident from "./pages/Accident";
 
 function App() {
     return (
@@ -34,8 +34,13 @@ function App() {
                         <Route path="/summary" element={<Summary />} />
                         <Route path="/Insurance" element={<Quote />} />
                         <Route path="/fire" element={<Fire />} />
-                        <Route path="/customerDetailsForm" element={<CustomerDetailsForm />} />
+
+                        <Route
+                            path="/customerDetailsForm"
+                            element={<CustomerDetailsForm />}
+                        />
                         <Route path="/thankyou" element={<ThankYou />} />
+                        <Route path="/accident" element={<Accident />} />
                     </Route>
                     <Route path="/login" element={<Login />} />
 
