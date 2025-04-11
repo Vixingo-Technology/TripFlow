@@ -41,11 +41,8 @@ const CustomerDetailsForm = () => {
 
   const {
     construction,
-    protectionType,
     buildingWorth,
     contentWorth,
-    equipment,
-    files
   } = useSelector((state) => state.fireInsurance);
 
   return (
@@ -249,9 +246,10 @@ const CustomerDetailsForm = () => {
         </Grid>
 
         {/* Right Column - Summary */}
-        <Grid size={{ xs: 12, md: 4 }}>
-          <Card variant="outlined" sx={{ bgcolor: "#fff6f1" }}>
-            <CardContent sx={{ px: 3, py: 2 }}>
+        <Grid size={{ xs: 12, md: 4 }} >
+          <Card variant="outlined" sx={{ bgcolor: "#fff6f1" }}> {/* Matching soft peachy background */}
+            <CardContent sx={{ px: 3, py: 2 }}> {/* Padding adjusted */}
+              {/* Summary Title */}
               <Typography variant="h6" sx={{ fontWeight: "bold", mb: 1 }}>
                 Summary
               </Typography>
@@ -272,7 +270,7 @@ const CustomerDetailsForm = () => {
                     Construction Type
                   </Typography>
                   <br />
-                  <Typography variant="caption">{construction}</Typography>
+                  <Typography variant="caption">Dwelling House</Typography>
                 </Box>
 
                 <Box my={2}>
@@ -280,7 +278,7 @@ const CustomerDetailsForm = () => {
                     Construction Class
                   </Typography>
                   <br />
-                  <Typography variant="caption">A</Typography> {/* Use from state if needed */}
+                  <Typography variant="caption">A</Typography>
                 </Box>
 
                 <Box mb={5}>
@@ -288,9 +286,10 @@ const CustomerDetailsForm = () => {
                     Additional Perils Coverage
                   </Typography>
                   <br />
-                  <Typography variant="caption">Not Applicable</Typography> {/* Use from state if available */}
+                  <Typography variant="caption">Not Applicable</Typography>
                 </Box>
               </Box>
+
 
               <Box mt={2}>
                 {/* Building Worth */}
@@ -301,10 +300,10 @@ const CustomerDetailsForm = () => {
                     </Typography>
                   </Grid>
                   <Grid item>
-                    <Typography variant="caption">${buildingWorth.toFixed(2)}</Typography>
+                    <Typography variant="caption">$231.00</Typography>
                   </Grid>
                 </Grid>
-                <Divider />
+                <Divider></Divider>
                 {/* Content Worth */}
                 <Grid mt={1} mb={1} container justifyContent="space-between">
                   <Grid item>
@@ -313,11 +312,11 @@ const CustomerDetailsForm = () => {
                     </Typography>
                   </Grid>
                   <Grid item>
-                    <Typography variant="caption">${contentWorth.toFixed(2)}</Typography>
+                    <Typography variant="caption">$231.00</Typography>
                   </Grid>
                 </Grid>
-                <Divider />
-                {/* Premiums - replace with your logic */}
+                <Divider></Divider>
+                {/* Premiums */}
                 <Grid mt={1} mb={1} container justifyContent="space-between">
                   <Grid item>
                     <Typography variant="caption">Basic Benefit Premium</Typography>
@@ -326,7 +325,7 @@ const CustomerDetailsForm = () => {
                     <Typography variant="caption">$70.00</Typography>
                   </Grid>
                 </Grid>
-                <Divider />
+                <Divider></Divider>
                 <Grid mt={1} mb={1} container justifyContent="space-between">
                   <Grid item>
                     <Typography variant="caption">Gross Premium</Typography>
@@ -335,7 +334,7 @@ const CustomerDetailsForm = () => {
                     <Typography variant="caption">$70.00</Typography>
                   </Grid>
                 </Grid>
-                <Divider />
+                <Divider></Divider>
                 <Grid mt={1} container justifyContent="space-between">
                   <Grid item>
                     <Typography variant="caption">Net Premium</Typography>
@@ -346,14 +345,20 @@ const CustomerDetailsForm = () => {
                 </Grid>
               </Box>
 
+
+
+
               {/* Total Payable */}
               <Box mt={3}>
+                {/* Label row */}
                 <Box display="flex" alignItems="center">
+                  
                   <Typography variant="body1" sx={{ fontWeight: 600 }}>
                     Total Payable
                   </Typography>
                 </Box>
 
+                {/* Amount row */}
                 <Typography
                   variant="h5"
                   sx={{ fontWeight: 700, textAlign: "right", mt: 1 }}
@@ -361,6 +366,8 @@ const CustomerDetailsForm = () => {
                   $70.00
                 </Typography>
               </Box>
+
+
             </CardContent>
           </Card>
         </Grid>
