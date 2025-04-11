@@ -1,5 +1,5 @@
 import React from "react";
-import { useSelector } from "react-redux";
+// import { useSelector } from 'react-redux';
 import {
     Box,
     Button,
@@ -38,14 +38,11 @@ const options = [
 ];
 
 const CustomerDetailsForm = () => {
-    const {
-        construction,
-        // protectionType,
-        buildingWorth,
-        contentWorth,
-        // equipment,
-        // files
-    } = useSelector((state) => state.fireInsurance);
+    // const {
+    //   construction,
+    //   buildingWorth,
+    //   contentWorth,
+    // } = useSelector((state) => state.fireInsurance);
 
     return (
         <Box p={4}>
@@ -250,14 +247,18 @@ const CustomerDetailsForm = () => {
                 {/* Right Column - Summary */}
                 <Grid size={{ xs: 12, md: 4 }}>
                     <Card variant="outlined" sx={{ bgcolor: "#fff6f1" }}>
+                        {" "}
+                        {/* Matching soft peachy background */}
                         <CardContent sx={{ px: 3, py: 2 }}>
+                            {" "}
+                            {/* Padding adjusted */}
+                            {/* Summary Title */}
                             <Typography
                                 variant="h6"
                                 sx={{ fontWeight: "bold", mb: 1 }}
                             >
                                 Summary
                             </Typography>
-
                             {/* Period of Insurance */}
                             <Typography
                                 variant="caption"
@@ -269,7 +270,6 @@ const CustomerDetailsForm = () => {
                                     10th Apr 2025 until 9th Apr 2026
                                 </Box>
                             </Typography>
-
                             {/* Construction Info */}
                             <Box mt={2}>
                                 <Box mb={1}>
@@ -281,7 +281,7 @@ const CustomerDetailsForm = () => {
                                     </Typography>
                                     <br />
                                     <Typography variant="caption">
-                                        {construction}
+                                        Dwelling House
                                     </Typography>
                                 </Box>
 
@@ -293,10 +293,7 @@ const CustomerDetailsForm = () => {
                                         Construction Class
                                     </Typography>
                                     <br />
-                                    <Typography variant="caption">
-                                        A
-                                    </Typography>{" "}
-                                    {/* Use from state if needed */}
+                                    <Typography variant="caption">A</Typography>
                                 </Box>
 
                                 <Box mb={5}>
@@ -309,11 +306,9 @@ const CustomerDetailsForm = () => {
                                     <br />
                                     <Typography variant="caption">
                                         Not Applicable
-                                    </Typography>{" "}
-                                    {/* Use from state if available */}
+                                    </Typography>
                                 </Box>
                             </Box>
-
                             <Box mt={2}>
                                 {/* Building Worth */}
                                 <Grid
@@ -328,11 +323,11 @@ const CustomerDetailsForm = () => {
                                     </Grid>
                                     <Grid item>
                                         <Typography variant="caption">
-                                            ${buildingWorth.toFixed(2)}
+                                            $231.00
                                         </Typography>
                                     </Grid>
                                 </Grid>
-                                <Divider />
+                                <Divider></Divider>
                                 {/* Content Worth */}
                                 <Grid
                                     mt={1}
@@ -347,12 +342,12 @@ const CustomerDetailsForm = () => {
                                     </Grid>
                                     <Grid item>
                                         <Typography variant="caption">
-                                            ${contentWorth.toFixed(2)}
+                                            $231.00
                                         </Typography>
                                     </Grid>
                                 </Grid>
-                                <Divider />
-                                {/* Premiums - replace with your logic */}
+                                <Divider></Divider>
+                                {/* Premiums */}
                                 <Grid
                                     mt={1}
                                     mb={1}
@@ -370,7 +365,7 @@ const CustomerDetailsForm = () => {
                                         </Typography>
                                     </Grid>
                                 </Grid>
-                                <Divider />
+                                <Divider></Divider>
                                 <Grid
                                     mt={1}
                                     mb={1}
@@ -388,7 +383,7 @@ const CustomerDetailsForm = () => {
                                         </Typography>
                                     </Grid>
                                 </Grid>
-                                <Divider />
+                                <Divider></Divider>
                                 <Grid
                                     mt={1}
                                     container
@@ -406,9 +401,9 @@ const CustomerDetailsForm = () => {
                                     </Grid>
                                 </Grid>
                             </Box>
-
                             {/* Total Payable */}
                             <Box mt={3}>
+                                {/* Label row */}
                                 <Box display="flex" alignItems="center">
                                     <Typography
                                         variant="body1"
@@ -418,6 +413,7 @@ const CustomerDetailsForm = () => {
                                     </Typography>
                                 </Box>
 
+                                {/* Amount row */}
                                 <Typography
                                     variant="h5"
                                     sx={{
