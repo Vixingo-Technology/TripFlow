@@ -191,67 +191,105 @@ const CustomerDetailsForm = () => {
           </Box>
 
           <Box mt={4}>
-            <Card variant="outlined">
-              <CardContent>
-                <Typography variant="h6" gutterBottom>
-                  Property Details
-                </Typography>
-                <Grid container spacing={2}>
-                  <Grid size={12}>
-                    <TextField
-                      fullWidth
-                      label="Line 1"
-                      value={formData.address.line1}
-                      onChange={(e) => handleAddressChange("line1", e.target.value)}
-                    />
-                  </Grid>
-                  <Grid size={12}>
-                    <TextField
-                      fullWidth
-                      label="Line 2"
-                      value={formData.address.line2}
-                      onChange={(e) => handleAddressChange("line2", e.target.value)}
-                    />
-                  </Grid>
-                  <Grid size={12}>
-                    <TextField
-                      fullWidth
-                      label="City/Province"
-                      value={formData.address.city}
-                      onChange={(e) => handleAddressChange("city", e.target.value)}
-                    />
-                  </Grid>
-                  <Grid size={12}>
-                    <TextField
-                      fullWidth
-                      label="Sangkat / Commune"
-                      value={formData.address.commune}
-                      onChange={(e) => handleAddressChange("commune", e.target.value)}
-                    />
-                  </Grid>
-                  <Grid size={12}>
-                    <TextField
-                      fullWidth
-                      label="Country"
-                      value="Cambodia"
-                      disabled
-                    />
-                  </Grid>
-                  <Grid size={12}>
-                    <FormControlLabel
-                      control={
-                        <Checkbox
-                          checked={formData.sameAsMailing}
-                          onChange={(e) => handleChange("sameAsMailing", e.target.checked)}
-                        />
-                      }
-                      label="Is Risk Location same with your Mailing Address?"
-                    />
-                  </Grid>
-                </Grid>
-              </CardContent>
-            </Card>
-          </Box>
+  <Card variant="outlined">
+    <CardContent>
+      <Typography variant="h6" gutterBottom>
+        Property Details
+      </Typography>
+      <Grid container spacing={2}>
+        <Grid size={12}>
+          <TextField
+            fullWidth
+            label="Line 1"
+            value={formData.address.line1}
+            onChange={(e) => handleAddressChange("line1", e.target.value)}
+          />
+        </Grid>
+        <Grid size={12}>
+          <TextField
+            fullWidth
+            label="Line 2"
+            value={formData.address.line2}
+            onChange={(e) => handleAddressChange("line2", e.target.value)}
+          />
+        </Grid>
+        <Grid size={12}>
+          <TextField
+            fullWidth
+            label="City/Province"
+            value={formData.address.city}
+            onChange={(e) => handleAddressChange("city", e.target.value)}
+          />
+        </Grid>
+        <Grid size={12}>
+          <TextField
+            fullWidth
+            label="Sangkat / Commune"
+            value={formData.address.commune}
+            onChange={(e) => handleAddressChange("commune", e.target.value)}
+          />
+        </Grid>
+        <Grid size={12}>
+          <TextField
+            fullWidth
+            label="Country"
+            value="Cambodia"
+            disabled
+          />
+        </Grid>
+        <Grid size={12}>
+          <FormControlLabel
+            control={
+              <Checkbox
+                checked={formData.sameAsMailing}
+                onChange={(e) => handleChange("sameAsMailing", e.target.checked)}
+              />
+            }
+            label="Is Risk Location same with your Mailing Address?"
+          />
+        </Grid>
+
+        {/* Conditionally show risk address fields when NOT same as mailing */}
+        {!formData.sameAsMailing && (
+          <>
+            <Grid size={12}>
+              <Typography variant="subtitle2">Risk Location Address</Typography>
+            </Grid>
+            <Grid size={12}>
+              <TextField
+                fullWidth
+                label="Risk Address - Line 1"
+                onChange={(e) => handleAddressChange("riskLine1", e.target.value)}
+              />
+            </Grid>
+            <Grid size={12}>
+              <TextField
+                fullWidth
+                label="Risk Address - Line 2"
+                onChange={(e) => handleAddressChange("riskLine2", e.target.value)}
+              />
+            </Grid>
+            <Grid size={12}>
+              <TextField
+                fullWidth
+                label="Risk Address - City/Province"
+                onChange={(e) => handleAddressChange("riskCity", e.target.value)}
+              />
+            </Grid>
+            <Grid size={12}>
+              <TextField
+                fullWidth
+                label="Risk Address - Sangkat / Commune"
+                onChange={(e) => handleAddressChange("riskCommune", e.target.value)}
+              />
+            </Grid>
+          </>
+        )}
+      </Grid>
+    </CardContent>
+  </Card>
+</Box>
+
 
           <Box mt={3} display="flex" justifyContent="space-between">
             <Button variant="outlined">Back</Button>
