@@ -1,4 +1,3 @@
-// File Path: C:\SuLynn\dashboard\public_site\src\components\Footer.js
 import { Box, Stack, Typography } from "@mui/material";
 import React from "react";
 import Grid from "@mui/material/Grid";

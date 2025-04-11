@@ -20,11 +20,14 @@ import Login from "./pages/Login";
 import { Paper } from "@mui/material";
 import Accident from "./pages/Accident";
 import ProductLayout from "./layouts/ProductLayout";
+import PaOnline from "./pages/PaOnline";
+import ScrollToTop from "./components/dynamic/ScrollToTop";
 
 function App() {
     return (
         <>
             <BrowserRouter>
+                <ScrollToTop />
                 <Routes>
                     <Route path="/" element={<LandingLayout />}>
                         <Route path="/" element={<Home />} />
@@ -43,7 +46,8 @@ function App() {
                         <Route path="/thankyou" element={<ThankYou />} />
                     </Route>
                     <Route path="/" element={<ProductLayout />}>
-                        <Route path="/accident" element={<Accident />} />
+                        <Route path="accident" element={<Accident />} />
+                        <Route path="accident/online" element={<PaOnline />} />
                     </Route>
                     <Route path="/login" element={<Login />} />
 
