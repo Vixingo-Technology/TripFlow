@@ -19,6 +19,7 @@ import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
 import { Paper } from "@mui/material";
 import Accident from "./pages/Accident";
+import ProductLayout from "./layouts/ProductLayout";
 
 function App() {
     return (
@@ -40,6 +41,8 @@ function App() {
                             element={<CustomerDetailsForm />}
                         />
                         <Route path="/thankyou" element={<ThankYou />} />
+                    </Route>
+                    <Route path="/" element={<ProductLayout />}>
                         <Route path="/accident" element={<Accident />} />
                     </Route>
                     <Route path="/login" element={<Login />} />
