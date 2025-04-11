@@ -1,5 +1,5 @@
 import React from "react";
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 import {
   Box,
   Button,
@@ -39,11 +39,11 @@ const options = [
 
 const CustomerDetailsForm = () => {
 
-  const {
-    construction,
-    buildingWorth,
-    contentWorth,
-  } = useSelector((state) => state.fireInsurance);
+  // const {
+  //   construction,
+  //   buildingWorth,
+  //   contentWorth,
+  // } = useSelector((state) => state.fireInsurance);
 
   return (
     <Box p={4}>
