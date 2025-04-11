@@ -11,38 +11,33 @@ export default function Accident() {
         <div>
             {" "}
             <Breadcrumbs aria-label="breadcrumb" sx={{ my: 1 }}>
-                <NavLink
-                    // underline="hover"
-                    // sx={{ display: "flex", alignItems: "center" }}
-                    // color="inherit"
+                <Link
+                    component={NavLink}
                     to="/"
+                    underline="hover"
+                    sx={{
+                        display: "flex",
+                        alignItems: "center",
+                        color: "text.primary",
+                    }}
                 >
-                    <Typography
-                        sx={{
-                            color: "text.primary",
-                            display: "flex",
-                            alignItems: "center",
-                        }}
-                    >
-                        <HomeIcon sx={{ mr: 0.5 }} fontSize="inherit" />
-                        Home
-                    </Typography>
-                </NavLink>
+                    <HomeIcon sx={{ mr: 0.5 }} fontSize="inherit" />
+                    Home
+                </Link>
 
                 <Typography
+                    color="text.primary"
                     sx={{
-                        color: "text.primary",
                         display: "flex",
                         alignItems: "center",
                     }}
                 >
-                    <PersonalInjuryOutlinedIcon
-                        sx={{ mr: 0.5 }}
-                        fontSize="inherit"
-                    />
+                    <PersonalInjuryOutlinedIcon sx={{ mr: 0.5 }} fontSize="inherit" />
                     Personal Accident
                 </Typography>
             </Breadcrumbs>
+
+
             <Grid
                 container
                 sx={{ alignItems: "center", maxWidth: "1000px", mx: "auto" }}
