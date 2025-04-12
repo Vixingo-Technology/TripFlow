@@ -6,10 +6,10 @@ import { Box } from "@mui/material";
 
 export default function ProductLayout() {
     return (
-        <>
+        <Box sx={{ backgroundColor: "background.default" }}>
             <MiniHeader />
             <Outlet />
             {/* <Footer /> */}
-        </>
+        </Box>
     );
 }

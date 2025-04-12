@@ -20,8 +20,9 @@ import Login from "./pages/Login";
 import { Paper } from "@mui/material";
 import Accident from "./pages/Accident";
 import ProductLayout from "./layouts/ProductLayout";
-import PaOnline from "./pages/PaOnline";
+
 import ScrollToTop from "./components/dynamic/ScrollToTop";
+import PaForm from "./components/forms/PaForm";
 
 function App() {
     return (
@@ -47,7 +48,7 @@ function App() {
                     </Route>
                     <Route path="/" element={<ProductLayout />}>
                         <Route path="accident" element={<Accident />} />
-                        <Route path="accident/online" element={<PaOnline />} />
+                        <Route path="accident/online" element={<PaForm />} />
                     </Route>
                     <Route path="/login" element={<Login />} />
 
