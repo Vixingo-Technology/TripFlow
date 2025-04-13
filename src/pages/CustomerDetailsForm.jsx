@@ -1,29 +1,33 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  Box,
-  Button,
-  Card,
-  CardContent,
-  Grid,
-  MenuItem,
-  Radio,
-  RadioGroup,
-  FormControl,
-  FormLabel,
-  FormControlLabel,
-  Select,
-  TextField,
-  Typography,
-  Checkbox,
-  Divider,
+    Box,
+    Button,
+    Card,
+    CardContent,
+    Grid,
+    MenuItem,
+    Radio,
+    RadioGroup,
+    FormControl,
+    FormLabel,
+    FormControlLabel,
+    Select,
+    TextField,
+    Typography,
+    Checkbox,
+    Divider,
 } from "@mui/material";
 import {
-  LocalizationProvider,
-  MobileDatePicker,
+
+    DatePicker,
+    LocalizationProvider,
+    MobileDatePicker,
+
 } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import dayjs from "dayjs";
+
 import { setCustomerDetails } from "../utils/slice/FireInsuranceSlice";
 import { useNavigate } from "react-router";
 
@@ -429,6 +433,7 @@ const CustomerDetailsForm = () => {
       </Grid>
     </Box>
   );
+
 };
 
 export default CustomerDetailsForm;
