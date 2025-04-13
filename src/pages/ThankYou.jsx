@@ -8,11 +8,14 @@ export default function ThankYou() {
             <Grid
                 container
                 columns={12}
+                spacing={4}
                 sx={{
                     maxWidth: "1200px",
+
                     mx: "auto",
                     px: 2,
-                    my: 5,
+                    py: 5,
+                    pb: 20,
                     alignItems: "center",
                     flexDirection: "column-reverse",
                 }}
@@ -21,7 +24,13 @@ export default function ThankYou() {
                     <Card
                         elevation={4}
                         variant="outlined"
-                        sx={{ textAlign: "center", p: 2, py: 4 }}
+                        sx={{
+                            textAlign: "center",
+                            p: 2,
+                            py: 4,
+                            maxWidth: "600px",
+                            mx: "auto",
+                        }}
                     >
                         <Typography
                             variant="h2"
@@ -59,7 +68,11 @@ export default function ThankYou() {
                     >
                         <Typography
                             variant="h5"
-                            sx={{ m: 2, textAlign: "center" }}
+                            sx={{
+                                m: 2,
+                                textAlign: "center",
+                                color: "text.primary",
+                            }}
                         >
                             Dear Mr. AYZ <br />
                             Thanks for taking Travel insurance from us. It is

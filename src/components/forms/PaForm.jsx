@@ -708,9 +708,16 @@ export default function PaForm() {
                         width: "100%",
                     }}
                 >
-                    <Button variant="contained" size="large" sx={{ right: 10 }}>
-                        Buy Now {selectedPlan && ` - ${calculateTotalPrice()}`}
-                    </Button>
+                    <NavLink to={"checkout"}>
+                        <Button
+                            variant="contained"
+                            size="large"
+                            sx={{ right: 10 }}
+                        >
+                            Buy Now{" "}
+                            {selectedPlan && ` - ${calculateTotalPrice()}`}
+                        </Button>
+                    </NavLink>
                 </Box>{" "}
             </Box>
         </>
