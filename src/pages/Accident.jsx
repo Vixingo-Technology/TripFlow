@@ -100,10 +100,15 @@ export default function Accident() {
                 }}
             >
                 <Grid size={{ xs: 12, md: 6 }}>
-                    <Typography variant="h4" component="h2" sx={{ mt: 2 }}>
+                    <Typography
+                        variant="h4"
+                        color="text.primary"
+                        component="h2"
+                        sx={{ mt: 2 }}
+                    >
                         Personal Accident Insurance
                     </Typography>
-                    <Typography variant="body1" my={1}>
+                    <Typography variant="body1" my={1} color="text.primary">
                         {" "}
                         A gift of future for your family.
                     </Typography>
@@ -143,7 +148,7 @@ export default function Accident() {
                 sx={{
                     my: 8,
                     px: 2,
-
+                    color: "text.primary",
                     textAlign: "center",
                 }}
             >
@@ -215,7 +220,7 @@ export default function Accident() {
                     </Box>
                 </Box>
             </Box>
-            <Box>
+            <Box sx={{ color: "text.primary" }}>
                 <Typography variant="h4" sx={{ textAlign: "center", my: 2 }}>
                     General Exclusions
                 </Typography>

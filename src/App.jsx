@@ -23,6 +23,7 @@ import ProductLayout from "./layouts/ProductLayout";
 
 import ScrollToTop from "./components/dynamic/ScrollToTop";
 import PaForm from "./components/forms/PaForm";
+import CheckoutForm from "./components/forms/CheckoutForm";
 
 function App() {
     return (
@@ -49,6 +50,10 @@ function App() {
                     <Route path="/" element={<ProductLayout />}>
                         <Route path="accident" element={<Accident />} />
                         <Route path="accident/online" element={<PaForm />} />
+                        <Route
+                            path="accident/online/checkout"
+                            element={<CheckoutForm />}
+                        />
                     </Route>
                     <Route path="/login" element={<Login />} />
 
